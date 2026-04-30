@@ -153,3 +153,6 @@ alias teclado-us='setxkbmap -layout us'
 eval "$(oh-my-posh init bash --config ~/.poshthemes/pure.omp.json)"
 
 alias logisim='cd Repos/C08-ArquiteturaComputadores && java -Dswing.systemlaf=javax.swing.plaf.metal.MetalLookAndFeel -jar logisim-generic-2.7.1.jar'
+
+alias copiar='xclip -selection clipboard'
+alias colar='xclip -selection clipboard -o'
