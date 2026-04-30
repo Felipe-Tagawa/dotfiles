@@ -1,33 +1,43 @@
 #!/bin/bash
-#
-GREEN='\034[0;32m'
-NC='\034[0m'
+
+# Cores para o terminal (corrigi o código escape de \034 para \033)
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
 
 echo -e "${GREEN}Iniciando a simbiose dos dotfiles com Stow...${NC}"
 
 # Verificação do Stow
 if ! command -v stow &> /dev/null; then
-	echo "Stow não encontrado. Instalando..."
-	sudo apt update && sudo apt install -y stow
+    echo -e "${YELLOW}Stow não encontrado. Instalando...${NC}"
+    sudo apt update && sudo apt install -y stow
 fi
 
-# Navegação
-DOTFILES_DIR=$(cd "dirname "${BASH_SOURCE[1]}")" && pwd)
+# Navegação para o diretório do script
+DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$DOTFILES_DIR"
 
-modules=("bash", "autostart", "cinnamon", "fonts", "git", "gtk-2.0", "icons", "kitty", "meta", "nvim", "scripts", "system", "wallpaper")
+# Lista de módulos (removi as vírgulas, bash usa espaços em arrays)
+modules=("bash" "autostart" "cinnamon" "fonts" "git" "gtk-3.0" "icons" "kitty" "meta" "nvim" "scripts" "system" "Wallpaper")
 
-echo "linkando..."
+echo "Linkando módulos..."
 
 for module in "${modules[@]}"; do
-	if [ -d "$modulo" ]; then
-		echo "Configurando: $module"
-		stow -R -t "$HOME" "$module"
-	else
-		echo "Aviso: Pasta '$module' não encontrada . Pulando..."
-	fi
+    if [ -d "$module" ]; then
+        echo -e "Configurando: ${GREEN}$module${NC}"
+        # O -R faz o restow (atualiza se já existir)
+        stow -R -t "$HOME" "$module"
+    else
+        echo -e "${YELLOW}Aviso: Pasta '$module' não encontrada. Pulando...${NC}"
+    fi
 done
 
-echo -e "${GREEN} Pronto! Tudo certo e linkado.${NC}"
+# Pós-instalação: Recarregar configurações do Cinnamon se o arquivo existir
+if [ -f "$DOTFILES_DIR/cinnamon/dconf-settings.ini" ]; then
+    echo -e "${GREEN}Aplicando configurações de interface (dconf)...${NC}"
+    dconf load / < "$DOTFILES_DIR/cinnamon/dconf-settings.ini"
+fi
+
+echo -e "${GREEN}Pronto! Tudo certo e linkado.${NC}"
 
 
