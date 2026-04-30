@@ -1,0 +1,21 @@
+messagedialog .dialog-action-box button,
+messagedialog .dialog-action-box .linked:not(.vertical) > button {
+  background-color: #ebdbb2;
+  color: #1d2021;
+  border: 1px solid #bdae93;
+  font-weight: 500;
+}
+
+messagedialog .dialog-action-box button:hover,
+messagedialog .dialog-action-box .linked:not(.vertical) > button:hover {
+  background-color: #d5c4a1;
+  color: #1d2021;
+}
+messagedialog {
+  background-color: #fbf1c7;
+  color: #1d2021;
+}
+
+messagedialog .dialog-action-box {
+  background-color: #ebdbb2;
+}

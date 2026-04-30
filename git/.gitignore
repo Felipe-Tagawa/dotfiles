@@ -1,0 +1,17 @@
+# Logs e Histórico
+.bash_history
+.bash_logout
+.lesshst
+.xsession-errors*
+
+# Caches de ferramentas
+.cache/
+__pycache__/
+.java/
+.dotnet/
+.adobe/
+
+# Dados de aplicativos específicos que são pesados/desnecessários
+.mozilla/
+.thunderbird/
+.pki/
