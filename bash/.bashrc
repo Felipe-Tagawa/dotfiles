@@ -156,3 +156,14 @@ alias logisim='cd Repos/C08-ArquiteturaComputadores && java -Dswing.systemlaf=ja
 
 alias copiar='xclip -selection clipboard'
 alias colar='xclip -selection clipboard -o'
+
+alias zai='npx @z_ai/coding-helper'
+export HISTFILE="$HOME/.local/state/bash/history"
+export LESSHISTFILE="$HOME/.local/state/less/history"
+export WGET_HSTS_FILE="$HOME/.local/state/wget/hsts"
+
+# Aliases para gerenciamento de memória
+alias memoria-monitor='bash /home/kyo/scripts/monitorar-memoria.sh'
+alias memoria-limpar='sudo bash /home/kyo/scripts/limpar-memoria.sh'
+alias memoria-servicos='bash /home/kyo/scripts/gerenciar-servicos-memoria.sh'
+alias memoria-log='sudo tail -f /var/log/memoria-auto.log'

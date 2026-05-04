@@ -1,0 +1,40 @@
+[meta]
+name = "Gruvbox Dark"
+description = "Retro groove colorscheme"
+variant = "dark"
+
+[colors.core]
+accent = "#fe8019"             # Gruvbox Orange
+accent_foreground = "#282828"
+background = "#282828"         # Gruvbox Dark0
+foreground = "#ebdbb2"         # Gruvbox Light1
+secondary_background = "#3c3836" # Gruvbox Dark1
+border = "#504945"             # Gruvbox Dark2
+
+[colors.accents]
+blue = "#83a598"
+green = "#b8bb26"
+magenta = "#d3869b"
+orange = "#fe8019"
+red = "#fb4934"
+yellow = "#fabd2f"
+cyan = "#8ec07c"
+purple = "#d3869b"
+
+[colors.text]
+default = "#ebdbb2"
+muted = "#a89984"
+danger = "#fb4934"
+success = "#b8bb26"
+placeholder = "#928374"
+selection = { background = "#fe8019", foreground = "#282828" }
+
+[colors.input]
+border = "#504945"
+border_focus = "#fe8019"
+
+[colors.list.item.selection]
+background = "#3c3836"
+foreground = "#ebdbb2"
+secondary_background = "#3c3836"
+secondary_foreground = "#a89984"
