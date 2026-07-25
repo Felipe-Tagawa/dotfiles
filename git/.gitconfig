@@ -3,3 +3,6 @@
 [user]
 	email = felipereisbkp@gmail.com
 	name = Felipe Tagawa
+[credential]
+	helper = manager
+	credentialStore = secretservice

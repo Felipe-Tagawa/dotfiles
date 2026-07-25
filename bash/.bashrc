@@ -136,7 +136,7 @@ alias drive='~/.scripts/abrir_drive.sh'
 alias mars='cd Repos/C08-ArquiteturaComputadores && java -jar Mars4_5.jar'
 
 # Força o layout ANSI Intl se estiver em uma sessão gráfica
-if [ -n "$DISPLAY" ]; then
+if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$DISPLAY" ]; then
     setxkbmap -layout us -variant intl
 fi
 
@@ -152,12 +152,12 @@ alias teclado-us='setxkbmap -layout us'
 # Inicializa o Oh My Posh para o Bash usando o tema que mostra o Git
 eval "$(oh-my-posh init bash --config ~/.poshthemes/pure.omp.json)"
 
-alias logisim='cd Repos/C08-ArquiteturaComputadores && java -Dswing.systemlaf=javax.swing.plaf.metal.MetalLookAndFeel -jar logisim-generic-2.7.1.jar'
+alias logisim='cd Repos/C08-ArquiteturaComputadores && java -Dswing.systemlaf=javax.swing.plaf.metal.MetalLookAndFeel -jar logisim-generic-2.7.1.jar & '
 
-alias copiar='xclip -selection clipboard'
-alias colar='xclip -selection clipboard -o'
+alias copiar='wl-copy'
+alias colar='wl-paste'
+alias tablet='scrcpy --max-fps=60 -b 16M --no-control'
 
-alias zai='npx @z_ai/coding-helper'
 export HISTFILE="$HOME/.local/state/bash/history"
 export LESSHISTFILE="$HOME/.local/state/less/history"
 export WGET_HSTS_FILE="$HOME/.local/state/wget/hsts"
@@ -167,3 +167,38 @@ alias memoria-monitor='bash /home/kyo/scripts/monitorar-memoria.sh'
 alias memoria-limpar='sudo bash /home/kyo/scripts/limpar-memoria.sh'
 alias memoria-servicos='bash /home/kyo/scripts/gerenciar-servicos-memoria.sh'
 alias memoria-log='sudo tail -f /var/log/memoria-auto.log'
+
+# Wayland e Hyprland
+export XDG_SESSION_TYPE=wayland
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export NVD_BACKEND=direct
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/kyo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/kyo/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/kyo/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/kyo/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+export PATH=$PATH:/home/kyo/.spicetify
+
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+
+alias sudo='sudo '
+alias apt='nala'
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="$HOME/.cargo/bin:$PATH"
