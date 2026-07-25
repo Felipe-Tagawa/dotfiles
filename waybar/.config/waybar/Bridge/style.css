@@ -1,0 +1,120 @@
+@import '../colors/colors.css';
+
+/* Catppuccin Mocha Colors */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Eddysevka Nerd Font SemiBold", "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: @bgd;
+  color: @fg;
+}
+
+/* Workspace Buttons */
+#workspaces button {
+  padding: 0 12px;
+  color: @magenta;
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+  color: @blue;
+  border-bottom: 2px solid @red;
+}
+
+#workspaces button:hover {
+  color: @fg;
+  background-color: @black;
+}
+
+#workspaces button.empty {
+  color: @black;
+}
+
+
+/* Window Title */
+#window {
+  padding: 0 12px;
+  color: @green;
+}
+
+/* Clock */
+#clock {
+  padding: 0 12px;
+  color: @yellow;
+  font-weight: 500;
+}
+
+/* Common Module Styling */
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio {
+  padding: 0 12px;
+  margin: 0 2px;
+  color: @blue;
+}
+
+/* CPU */
+#cpu {
+  color: @cyan;
+}
+
+/* Memory */
+#memory {
+  color: @green;
+}
+
+/* Battery States */
+#battery {
+  color: @yellow;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @orange;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+}
+
+/* Network */
+#network {
+  color: @blue;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+/* PulseAudio */
+#pulseaudio {
+  color: @magenta;
+}
+
+#pulseaudio.muted {
+  color: @blue;
+}
+
+/* System Tray */
+#tray {
+  padding: 0 12px;
+}
+
+#tray>.passive {
+  opacity: 0.7;
+}
+
+#tray>.needs-attention {
+  color: @red;
+}

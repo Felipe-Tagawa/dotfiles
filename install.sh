@@ -18,7 +18,10 @@ DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$DOTFILES_DIR"
 
 # Lista de módulos (removi as vírgulas, bash usa espaços em arrays)
-modules=("bash" "autostart" "cinnamon" "fonts" "git" "gtk-3.0" "icons" "kitty" "meta" "nvim" "scripts" "system" "Wallpaper")
+modules=("bash" "autostart" "cinnamon" "fonts" "git" "gtk-3.0" "icons" "kitty" "meta" "nvim" "scripts" "system" "Wallpaper" "waybar")
+
+# Módulos opcionais (só serão instalados se solicitado)
+optional_modules=("hyprland")
 
 echo "Linkando módulos..."
 
@@ -38,6 +41,20 @@ if [ -f "$DOTFILES_DIR/cinnamon/dconf-settings.ini" ]; then
     dconf load / < "$DOTFILES_DIR/cinnamon/dconf-settings.ini"
 fi
 
+# Perguntar sobre módulos opcionais
+echo ""
+echo -e "${YELLOW}Módulos opcionais disponíveis:${NC}"
+
+if [ -d "hyprland" ]; then
+    read -p "Deseja instalar o módulo Hyprland (compositor Wayland)? (s/n): " install_hyprland
+    if [[ $install_hyprland =~ ^[SsYy]$ ]]; then
+        echo -e "Configurando: ${GREEN}hyprland${NC}"
+        stow -R -t "$HOME" "hyprland"
+        echo -e "${YELLOW}Nota: Para instalar o Hyprland, execute: cd ~/dotfiles/hyprland && ./install-hyprland.sh${NC}"
+    fi
+fi
+
+echo ""
 echo -e "${GREEN}Pronto! Tudo certo e linkado.${NC}"
 
 

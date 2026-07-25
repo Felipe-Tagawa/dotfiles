@@ -1,0 +1,144 @@
+@import '../colors/colors.css';
+
+* {
+  font-family: "Caskaydia Cove Nerd Font Propo", "Caskaydia Nerd Font Mono Propo", sans-serif;
+  font-size: 13px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+.modules-right {
+  margin-right: 12px;
+}
+
+#workspaces button {
+  background-color: transparent;
+  color: @magenta;
+  transition: margin 150ms ease-in-out, padding 150ms ease-in-out;
+  transition: background-color 0.3s ease, color 0.3s ease, padding 0.2s ease;
+}
+
+#workspaces {
+  background-color: @bgd;
+  padding: 2px 2px 2px 2px;
+  border-radius: 50px;
+  margin-left: 12px;
+}
+
+#workspaces button.active {
+  background-color: @magenta;
+  color: @bg;
+  padding: 5px 24px;
+}
+
+#workspaces button.active:hover {
+  color: @blue;
+  background: @blue;
+}
+
+#workspaces button.empty {
+  color: @bright_black;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+  color: @bg;
+}
+
+#battery,
+#pulseaudio,
+#backlight,
+#custom-kanata,
+#network,
+#clock,
+#custom-media,
+#window,
+#tray,
+#bluetooth,
+#custom-distro,
+#custom-notification,
+#custom-privacydots,
+#custom-github,
+#custom-user,
+#power-profiles-daemon {
+  color: @blue;
+  background-color: @bgd;
+  padding: 0 15px 0 15px;
+  margin: 0 0 0 12px;
+}
+
+#custom-privacydots {
+  padding: 0 10px;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+#battery {
+  color: @red;
+}
+
+#custom-github {
+  color: @green;
+}
+
+#custom-kanata {
+  color: @green;
+}
+
+#custom-media {
+  color: @cyan;
+}
+
+#custom-pacman {
+  color: @green;
+}
+
+#clock {
+  color: @orange;
+}
+
+#network {
+  color: @magenta;
+}
+
+#pulseaudio {
+  color: @blue;
+}
+
+#custom-launcher,
+#custom-notification {
+  color: @red;
+}
+
+#window.hidden {
+  opacity: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+tooltip {
+  border: 2px solid @magenta;
+  border-radius: 10px;
+  background-color: @bgd;
+}
+
+tooltip label {
+  margin: 2px 4px;
+  font-weight: normal;
+}
+
+tooltip decoration {
+  border: none;
+  background-color: transparent;
+}
