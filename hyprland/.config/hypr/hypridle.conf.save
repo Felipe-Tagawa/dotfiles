@@ -1,0 +1,17 @@
+general {
+    lock_cmd = ~/.config/hypr/scripts/lock.sh      # O script que o hypridle deve chamar
+    before_sleep_cmd = loginctl lock-session       # Bloqueia antes de suspender a máquina
+}
+
+# REGRA 1: Bloquear a tela após 5 minutos (300 segundos) de inatividade
+listener {
+    timeout = 300
+    on-timeout = loginctl lock-session
+}
+
+# REGRA 2: Apagar o monitor 30 segundos depois de bloquear (5min e 30s)
+listener {
+    timeout = 330
+    on-timeout = hyprctl dispatch dpms off
+    on-resume = hyprctl dispatch dpms on
+}

@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# Script para gerenciar histórico de clipboard com Rofi
+# Usa o tema customizado do clipboard
+THEME="$HOME/.config/rofi/clipboard.rasi"
 
-if [ "$1" = "copy" ]; then
-    # Copiar item do histórico
-    cliphist list | rofi -dmenu -i -p "Clipboard:" -theme ~/.config/rofi/scripts/cyberpunk.rasi | cliphist decode | wl-copy
-else
-    # Mostrar e selecionar do histórico
-    cliphist list | rofi -dmenu -i -p "Clipboard:" -theme ~/.config/rofi/scripts/cyberpunk.rasi | cliphist decode | wl-copy
-fi
+# O parâmetro -display-columns 2 faz o Rofi mostrar apenas o texto copiado, escondendo os IDs do cliphist
+cliphist list | rofi -no-config -dmenu -i -display-columns 2 -p "📋" -theme "$THEME" | cliphist decode | wl-copy

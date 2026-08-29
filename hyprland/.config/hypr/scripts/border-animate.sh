@@ -1,9 +1,17 @@
 #!/bin/bash
+
+# Cores Catppuccin Mocha em hexadecimal (formato ARGB do Hyprland)
+mauve="0xffcba6f7"
+lavender="0xffb4befe"
+sapphire="0xff74c7ec"
+pink="0xfff5c2e7"
+
+# Array com as combinações de cores para o degradê animado
 colors=(
-    "rgba(000000ee) rgba(111111ee)"
-    "rgba(111111ee) rgba(222222ee)"
-    "rgba(222222ee) rgba(333333ee)"
-    "rgba(333333ee) rgba(000000ee)"
+    "$mauve $lavender"
+    "$lavender $sapphire"
+    "$sapphire $pink"
+    "$pink $mauve"
 )
 
 i=0
