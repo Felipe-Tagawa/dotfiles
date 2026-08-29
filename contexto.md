@@ -8,7 +8,6 @@ Este documento descreve a configuração de dotfiles do usuário, gerenciada atr
 dotfiles/
 ├── autostart/          # Aplicativos que iniciam automaticamente
 ├── bash/               # Configurações do Bash
-├── cinnamon/           # Configurações do ambiente Cinnamon
 ├── fonts/              # Fontes personalizadas
 ├── git/                # Configurações do Git
 ├── gtk-3.0/            # Configurações do GTK3
@@ -18,12 +17,10 @@ dotfiles/
 ├── nvim/               # Configurações do Neovim
 ├── scripts/            # Scripts utilitários
 ├── system/             # Configurações do sistema
-├── vicinae/            # Configurações específicas do Vicinae
-├── vicinae-config/     # Configurações adicionais do Vicinae
 ├── Wallpaper/          # Papéis de parede
 ├── .icons/             # Ícones do sistema
 ├── .themes/            # Temas do sistema
-└── install.sh          # Script de instalação automatizada
+└── bootstrap-fedora.sh          # Script de instalação automatizada
 ```
 
 ## 🔧 Módulos Configurados
@@ -39,18 +36,6 @@ dotfiles/
   - Branch padrão: `main`
   - Usuário: Felipe Tagawa
   - Email: felipereisbkp@gmail.com
-
-### 3. **cinnamon**
-- **Descrição**: Configurações do ambiente desktop Cinnamon
-- **Componentes**:
-  - `applets/` - Applets do painel
-  - `backgrounds/` - Papéis de parede
-  - `dconf-settings.ini` - Configurações do sistema
-  - `desklets/` - Desklets
-  - `extensions/` - Extensões
-  - `search_providers/` - Provedores de busca
-  - `spices/` - Spices do Cinnamon
-  - `themes/` - Temas
 
 ### 4. **kitty**
 - **Descrição**: Configurações do terminal moderno Kitty
