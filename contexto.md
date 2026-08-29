@@ -109,13 +109,12 @@ cd ~/dotfiles
 3. **Processa os módulos**: Para cada módulo na lista:
    - Verifica se o diretório existe
    - Executa `stow -R -t "$HOME" "$module"` para criar/atualizar os symlinks
-4. **Aplica configurações**: Carrega configurações do dconf para o Cinnamon
+4. **Aplica configurações**: Carrega configurações específicas de cada módulo, quando aplicável
 
 ### Módulos gerenciados pelo script:
 
 - `bash` - Configurações do shell
 - `autostart` - Aplicativos de inicialização automática
-- `cinnamon` - Ambiente desktop
 - `fonts` - Fontes personalizadas
 - `git` - Controle de versão
 - `gtk-3.0` - Interface GTK3
@@ -207,10 +206,10 @@ O arquivo `meta/packages.txt` contém uma lista completa de pacotes instalados n
 - Documentar o software utilizado
 - Facilitar a reinstalação do sistema
 
-### Instalar pacotes a partir da lista:
+### Instalar pacotes principais:
 
 ```bash
-sudo xargs -a ~/dotfiles/meta/packages.txt apt install
+./bootstrap-fedora.sh
 ```
 
 ## 🔍 Estrutura de Links Simbólicos
@@ -232,11 +231,6 @@ Após a instalação, os seguintes links simbólicos são criados no diretório 
 ```
 
 ## ⚙️ Configurações Específicas
-
-### Cinnamon Desktop
-- **Arquivo de configuração**: `dconf-settings.ini`
-- **Aplicação automática**: O script carrega as configurações após criar os symlinks
-- **Componentes**: Applets, desklets, extensões, temas e papéis de parede
 
 ### Git
 - **Branch padrão**: `main`
@@ -260,14 +254,12 @@ Após a instalação, os seguintes links simbólicos são criados no diretório 
 
 - O script de instalação requer permissões de superusuário para instalar o Stow se necessário
 - Algumas configurações podem exigir logout/login ou reinicialização para serem aplicadas
-- O arquivo `dconf-settings.ini` do Cinnamon é aplicado automaticamente pelo script
 - Certifique-se de não ter conflitos de arquivos antes de executar a instalação
 - É recomendável fazer backup das configurações atuais antes da primeira instalação
 
 ## 🔗 Recursos Adicionais
 
 - **GNU Stow Documentation**: https://www.gnu.org/software/stow/manual/
-- **Cinnamon Spices**: https://cinnamon-spices.linuxmint.com/
 - **Kitty Terminal**: https://sw.kovidgoyal.net/kitty/
 - **Neovim**: https://neovim.io/
 

@@ -41,7 +41,7 @@ sudo dnf install -y \
     pkgconf-pkg-config make fzf jq gawk bison autoconf automake libtool \
     tree gparted xdotool \
     java-17-openjdk java-21-openjdk-devel maven nodejs npm python3-pip \
-    postgresql-server postgresql-contrib mariadb-server \
+    mariadb-server \
     docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
     freerdp wine virt-host-validate \
     kitty neovim htop btop nvtop mousepad \
@@ -54,34 +54,45 @@ sudo dnf install -y \
     xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
     nitrogen feh swaybg thunar \
     loupe qalculate-gtk cava yad \
-    sddm qt6-qtdeclarative qt6-qtquickcontrols2 \
     pipewire pipewire-pulseaudio wireplumber pipewire-alsa \
     papirus-icon-theme stow \
     fira-code-fonts jetbrains-mono-fonts fontawesome-fonts \
     ffmpeg imagemagick obs-studio evince mpv-mpris \
     steam epson-inkjet-printer-escpr unrar \
+    scrcpy bash-completion \
     || warn "Algum pacote falhou — role a saída acima pra ver qual, e instale manualmente."
 
 step "Spotify (Flatpak, não tem no dnf)"
 flatpak install -y flathub com.spotify.Client
 
 # ────────────────────────────────────────────────────────────
-step "3/6 — Serviços"
+step "3/6 — nitch (via cargo, fora do dnf)"
+# ────────────────────────────────────────────────────────────
+
+if ! command -v cargo &> /dev/null; then
+    warn "cargo não encontrado — instalando Rust via rustup."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
+fi
+
+if ! command -v nitch &> /dev/null; then
+    cargo install nitch
+else
+    warn "nitch já instalado, pulando."
+fi
+
+warn "PATH precisa incluir \$HOME/.cargo/bin (já está no seu .bashrc)."
+
+# ────────────────────────────────────────────────────────────
+step "4/6 — Serviços"
 # ────────────────────────────────────────────────────────────
 
 sudo systemctl enable --now docker
 sudo usermod -aG docker "$USER"
 warn "Você precisa deslogar/logar de novo pra rodar docker sem sudo."
 
-if [ ! -d /var/lib/pgsql/data/base ]; then
-    sudo postgresql-setup --initdb
-fi
-sudo systemctl enable --now postgresql
-
-sudo systemctl enable --now sddm
-
 # ────────────────────────────────────────────────────────────
-step "4/6 — Dotfiles"
+step "5/6 — Dotfiles"
 # ────────────────────────────────────────────────────────────
 
 if [ ! -d "$HOME/dotfiles" ]; then
@@ -103,13 +114,6 @@ else
 fi
 
 # ────────────────────────────────────────────────────────────
-step "5/6 — VirtualBox (repo próprio, fora do Fedora/RPM Fusion)"
-# ────────────────────────────────────────────────────────────
-
-warn "VirtualBox não é instalado automaticamente por esse script."
-warn "Baixe o repo oficial da Oracle: https://www.virtualbox.org/wiki/Linux_Downloads (aba Fedora)."
-
-# ────────────────────────────────────────────────────────────
 step "6/6 — Pronto"
 # ────────────────────────────────────────────────────────────
 
@@ -117,7 +121,8 @@ echo ""
 echo -e "${GREEN}Bootstrap concluído.${NC}"
 echo "Coisas pra conferir manualmente:"
 echo "  - Reinicie a máquina antes de usar o Docker/grupo docker."
-echo "  - Confirme que o SDDM está com o tema/sessão Hyprland selecionada."
+echo "  - Escolha/configure o display manager e a sessão Hyprland você mesmo (sem SDDM aqui)."
 echo "  - O wallpaper em vídeo precisa do exec-once do mpvpaper no hyprland.conf"
 echo "    (ex: exec-once = mpvpaper -o \"no-audio loop\" '*' ~/Pictures/Wallpapers/seu-video.mp4)"
+echo "  - PostgreSQL não foi instalado aqui — instale/configure manualmente se for usar."
 echo "  - MariaDB não é iniciado automaticamente aqui — rode 'sudo systemctl enable --now mariadb' se for usar."
