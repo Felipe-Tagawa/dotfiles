@@ -6,3 +6,5 @@
 [credential]
 	helper = manager
 	credentialStore = secretservice
+[url "git@github.com:"]
+	insteadOf = https://github.com/
