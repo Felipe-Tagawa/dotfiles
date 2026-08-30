@@ -121,9 +121,9 @@ export PATH="$HOME/.nimble/bin:$PATH"
 
 # Editei a partir daqui
 #
-nitch
+fastfetch
 
-alias clear='command clear && nitch'
+alias clear='command clear && fastfetch'
 
 alias desligar='sudo shutdown now'
 
@@ -199,6 +199,5 @@ export SPARK_HOME=/opt/spark
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 alias sudo='sudo '
-alias apt='nala'
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="$HOME/.cargo/bin:$PATH"
