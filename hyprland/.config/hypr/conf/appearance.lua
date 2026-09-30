@@ -65,6 +65,7 @@ hl.config({
 
 hl.config({
     misc = {
+	disable_splash_rendering = true,    
         disable_hyprland_guiutils_check = true,
         force_default_wallpaper = 0,
         disable_hyprland_logo = true,

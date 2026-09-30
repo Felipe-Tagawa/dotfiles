@@ -24,8 +24,8 @@ hl.monitor({
 
 hl.config({
     input = {
-        kb_layout = "br", "us",
-        kb_variant = "abnt2", "intl",
+        kb_layout = "br, us",
+        kb_variant = "abnt2, intl",
         kb_model = "abnt2",
         repeat_delay = 300,
         repeat_rate = 50,

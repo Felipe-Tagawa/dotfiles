@@ -4,27 +4,11 @@
 
 ---@module 'hl'
 
--- --- Inicialização ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- --- Inicialização
+--
 -- Autostart
 hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("~/.config/hypr/scripts/wallpaper.sh &")
     hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
     hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Blue-Dark'")
     hl.exec_cmd("~/.config/waybar/start.sh")
@@ -38,4 +22,5 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("~/.config/hypr/scripts/clipboard_daemon.sh")
     hl.exec_cmd("~/.config/hypr/scripts/check_updates")
     hl.exec_cmd("hypridle")
+    hl.exec_cmd("hyprpaper")
 end)
