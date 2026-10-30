@@ -1,0 +1,170 @@
+@import url("../waybar/colors/dynamic.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+}
+
+.control-center {
+  background: rgba(18, 18, 24, 0.78);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+  padding: 16px;
+  color: @on_surface;
+}
+
+/* Control Center Header */
+.widget-title {
+  color: @on_surface;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.widget-title > button {
+  background: @surface_hover;
+  color: @on_surface;
+  border-radius: 12px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.widget-title > button:hover {
+  background: @primary;
+  color: @on_primary;
+}
+
+/* DND (Do Not Disturb) */
+.widget-dnd {
+  background: rgba(30, 30, 46, 0.65);
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin: 6px 0;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.widget-dnd > switch {
+  border-radius: 12px;
+  background: @surface_hover;
+}
+
+.widget-dnd > switch:checked {
+  background: @primary;
+}
+
+/* MPRIS Media Player Widget */
+.widget-mpris {
+  background: rgba(30, 30, 46, 0.65);
+  border-radius: 16px;
+  padding: 14px;
+  margin: 8px 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.widget-mpris-player {
+  padding: 6px 0;
+}
+
+.widget-mpris-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: @on_surface;
+}
+
+.widget-mpris-subtitle {
+  font-size: 11px;
+  color: @secondary;
+}
+
+.widget-mpris-player button {
+  color: @primary;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.widget-mpris-player button:hover {
+  background: @primary;
+  color: @on_primary;
+}
+
+/* Sliders (Volume & Backlight) */
+.widget-volume,
+.widget-backlight {
+  background: rgba(30, 30, 46, 0.65);
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin: 6px 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.widget-volume > scale,
+.widget-backlight > scale {
+  margin: 0 8px;
+}
+
+scale trough {
+  background: @surface_hover;
+  border-radius: 10px;
+  min-height: 8px;
+}
+
+scale highlight {
+  background: linear-gradient(135deg, @primary, @accent);
+  border-radius: 10px;
+}
+
+/* Notification Popups */
+.notification-row {
+  outline: none;
+}
+
+.notification {
+  background: rgba(22, 22, 30, 0.88);
+  border-radius: 16px;
+  margin: 6px 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.notification.critical {
+  border-color: @error;
+}
+
+.notification-content {
+  margin: 4px;
+}
+
+.summary {
+  font-size: 13px;
+  font-weight: 800;
+  color: @primary;
+}
+
+.body {
+  font-size: 12px;
+  color: @on_surface;
+}
+
+.time {
+  font-size: 10px;
+  color: @secondary;
+}
+
+.close-button {
+  background: @surface_hover;
+  color: @on_surface;
+  border-radius: 100%;
+  padding: 2px;
+}
+
+.close-button:hover {
+  background: @error;
+  color: @on_primary;
+}

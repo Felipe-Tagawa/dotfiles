@@ -1,0 +1,42 @@
+@import url("/home/kyo/.config/waybar/colors/dynamic.css");
+
+window {
+    border-radius: 20px;
+    background-color: @surface;
+    border: 2px solid @primary;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+#container {
+    margin: 16px;
+}
+
+image, label {
+    color: @on_surface;
+}
+
+progressbar:disabled,
+image:disabled {
+    opacity: 0.5;
+}
+
+progressbar {
+    min-height: 8px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+}
+
+trough {
+    min-height: 8px;
+    border-radius: 999px;
+    border: none;
+    background: @surface_hover;
+}
+
+progress {
+    min-height: 8px;
+    border-radius: 999px;
+    border: none;
+    background: @primary;
+}

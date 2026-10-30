@@ -80,7 +80,7 @@
     },
 
     "network": {
-        "format-wifi": "󰖩  {essid}",
+        "format-wifi": "󰖩",
         "format-ethernet": "󰈀  Connected",
         "format-linked": "󰈂  {ifname}",
         "format-disconnected": "󰖪  Disconnected",
@@ -106,6 +106,9 @@
 
     "tray": {
         "icon-size": 18,
-        "spacing": 8
+        "spacing": 8,
+        "ignore-list": [
+            "nm-applet"
+        ]
     }
 }

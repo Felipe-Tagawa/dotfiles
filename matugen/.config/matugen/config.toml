@@ -1,0 +1,26 @@
+[config]
+
+[templates.hyprland]
+input_path = "~/.config/matugen/templates/hyprland.lua"
+output_path = "~/.config/hypr/current_theme.lua"
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty.conf"
+output_path = "~/.config/kitty/current-theme.conf"
+post_hook = "pkill -SIGUSR1 kitty 2>/dev/null || true"
+
+[templates.rofi]
+input_path = "~/.config/matugen/templates/rofi.rasi"
+output_path = "~/.config/rofi/colors/current.rasi"
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar.css"
+output_path = "~/.config/waybar/colors/dynamic.css"
+
+[templates.hyprlock]
+input_path = "~/.config/matugen/templates/hyprlock.conf"
+output_path = "~/.config/hypr/hyprlock-colors.conf"
+
+[templates.spicetify]
+input_path = "~/.config/matugen/templates/spicetify.ini"
+output_path = "~/.config/spicetify/Themes/Matugen/color.ini"

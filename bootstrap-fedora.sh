@@ -49,14 +49,14 @@ sudo dnf install -y \
     docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
     freerdp wine virt-host-validate \
     kitty neovim htop btop nvtop mousepad \
-    hyprland mpv waybar wlogout wofi rofi dunst \
+    hyprland hyprpaper hypridle hyprlock mpv waybar wlogout rofi dunst SwayNotificationCenter \
     cliphist wl-clipboard grim slurp \
     brightnessctl playerctl pamixer pavucontrol \
     network-manager-applet blueman libnotify \
     polkit-kde \
     qt5ct qt6ct kvantum \
     xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
-    nitrogen feh swaybg thunar \
+    dolphin kdegraphics-thumbnailers ffmpegthumbs \
     loupe qalculate-gtk cava yad \
     pipewire pipewire-pulseaudio wireplumber pipewire-alsa \
     papirus-icon-theme stow \
@@ -133,8 +133,8 @@ echo -e "${GREEN}Bootstrap concluído.${NC}"
 echo "Coisas pra conferir manualmente:"
 echo "  - Reinicie a máquina antes de usar o Docker/grupo docker."
 echo "  - Escolha/configure o display manager e a sessão Hyprland você mesmo (sem SDDM aqui)."
-echo "  - O wallpaper em vídeo precisa do exec-once do mpvpaper no hyprland.conf"
-echo "    (ex: exec-once = mpvpaper -o \"no-audio loop\" '*' ~/Pictures/Wallpapers/seu-video.mp4)"
+echo "  - O wallpaper em vídeo precisa do hl.exec_cmd do mpvpaper no conf/startup.lua"
+echo "    (ex: hl.exec_cmd(\"mpvpaper -o 'no-audio loop' '*' ~/Pictures/Wallpapers/seu-video.mp4\"))"
 echo "  - PostgreSQL não foi instalado aqui — instale/configure manualmente se for usar."
 echo "  - MariaDB não é iniciado automaticamente aqui — rode 'sudo systemctl enable --now mariadb' se for usar."
 echo "  - fastfetch: personalize em ~/.config/fastfetch/config.jsonc (rode 'fastfetch --gen-config' de novo se quiser resetar)."

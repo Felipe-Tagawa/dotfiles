@@ -1,0 +1,9 @@
+[Unit]
+Description=Rotina automatizada de manutenção e limpeza no Fedora
+Documentation=man:systemd.service(5)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/fedora-maintenance.sh --silent
+StandardOutput=journal
+StandardError=journal

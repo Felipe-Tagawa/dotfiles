@@ -1,0 +1,9 @@
+[Unit]
+Description=Sincronizacao e Backup automatizado com IA dos Dotfiles
+Documentation=man:systemd.service(5)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/dotfiles-sync --silent
+StandardOutput=journal
+StandardError=journal

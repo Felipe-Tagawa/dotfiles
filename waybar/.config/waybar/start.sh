@@ -1,5 +1,6 @@
 #!/bin/bash
 pkill waybar 2>/dev/null
+pkill nm-applet 2>/dev/null
 sleep 0.3
 
 THEME_DIR=$(readlink -f ~/.config/waybar/current)

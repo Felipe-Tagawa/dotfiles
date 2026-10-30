@@ -1,0 +1,136 @@
+/* =============================================================================
+   Matugen Dynamic Material You Theme for Spotify (Spicetify XPUI)
+   ============================================================================= */
+
+:root {
+  --spice-font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+}
+
+/* 1. Main View & Backgrounds */
+.Root__main-view,
+.main-view-container,
+[data-testid="grid-container"],
+.main-home-homeHeader,
+.main-trackList-trackListHeader,
+.main-topBar-background,
+.Root__top-container,
+.main-rootlist-rootlist,
+.contentSpacing {
+  background-color: var(--spice-main) !important;
+}
+
+/* 2. Sidebars & Library */
+.Root__nav-bar,
+.Root__right-sidebar,
+.main-yourLibraryX-entryPoints,
+.main-yourLibraryX-header,
+.main-yourLibraryX-libraryRootlist,
+.main-yourLibraryX-libraryContainer {
+  background-color: var(--spice-sidebar) !important;
+  border-radius: 16px !important;
+  margin: 4px !important;
+}
+
+/* 3. Player Bar (Bottom) */
+.Root__now-playing-bar,
+.main-nowPlayingBar-container,
+.main-nowPlayingBar-nowPlayingBar {
+  background-color: var(--spice-player) !important;
+  border-radius: 16px !important;
+  margin: 4px 8px !important;
+  border-top: 1px solid var(--spice-card) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 4. Cards & Tiles */
+.main-card-card,
+.main-heroCard-card,
+.artist-artistOverview-artistOverviewContent,
+.view-homeShortcutsContainer-shortcut {
+  background-color: var(--spice-card) !important;
+  border-radius: 14px !important;
+  transition: all 0.25s cubic-bezier(0.05, 0.9, 0.1, 1.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.main-card-card:hover,
+.view-homeShortcutsContainer-shortcut:hover {
+  background-color: var(--spice-selected-row) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 5. Typography */
+body,
+.main-type-mesto,
+.main-type-ballad,
+.main-type-canon,
+.main-type-bass,
+.main-trackList-trackListRowTitle {
+  color: var(--spice-text) !important;
+}
+
+.main-type-mestoSubdued,
+.main-type-balladSubdued,
+.main-trackList-rowSubTitle,
+.main-entityHeader-subtitle,
+.main-entityHeader-metaDataText {
+  color: var(--spice-subtext) !important;
+}
+
+/* 6. Play Buttons & Primary Controls */
+.main-playButton-PlayButton,
+.main-playButton-primary,
+button[data-testid="play-button"],
+.Button-sm-buttonPrimary-useBrowserDefaultFocusStyle,
+.main-actionBar-ActionBarRow button[data-testid="play-button"] {
+  background-color: var(--spice-button) !important;
+  color: var(--spice-main) !important;
+  border-radius: 50% !important;
+  transition: transform 0.2s ease !important;
+}
+
+.main-playButton-PlayButton:hover,
+button[data-testid="play-button"]:hover {
+  background-color: var(--spice-button-active) !important;
+  transform: scale(1.08) !important;
+}
+
+/* 7. Progress & Volume Bars */
+.playback-progressbar-isInteractive .x-progressBar-fillColor,
+.x-progressBar-fillColor,
+.progress-bar__slider {
+  background-color: var(--spice-button) !important;
+}
+
+/* 8. Track List Rows */
+.main-trackList-trackListRow {
+  border-radius: 10px !important;
+}
+
+.main-trackList-trackListRow:hover {
+  background-color: var(--spice-selected-row) !important;
+}
+
+.main-trackList-trackListRow.main-trackList-selected {
+  background-color: var(--spice-selected-row) !important;
+}
+
+/* 9. Top Navigation Buttons */
+.main-topBar-button {
+  background-color: var(--spice-card) !important;
+  color: var(--spice-text) !important;
+}
+
+/* 10. Scrollbars */
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--spice-card) !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--spice-button) !important;
+}

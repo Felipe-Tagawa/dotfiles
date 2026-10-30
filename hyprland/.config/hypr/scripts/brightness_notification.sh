@@ -1,7 +1,19 @@
 #!/bin/bash
 
-# Notificação de brilho (usado com atalhos de teclado)
+# Notificação e controle de brilho (SwayOSD com fallback para brightnessctl + notify-send)
 # Uso: brightness_notification.sh [up|down]
+
+if command -v swayosd-client >/dev/null 2>&1; then
+    case $1 in
+        up)
+            swayosd-client --brightness raise 5
+            ;;
+        down)
+            swayosd-client --brightness lower 5
+            ;;
+    esac
+    exit 0
+fi
 
 get_brightness() {
     brightnessctl get | awk '{print int($1)}'

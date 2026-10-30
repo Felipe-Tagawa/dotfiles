@@ -1,0 +1,117 @@
+/**
+ * Rofi Clipboard Theme (Linked to active desktop theme)
+ **/
+
+@import "~/.config/rofi/colors/current.rasi"
+
+* {
+    font:                        "JetBrainsMono Nerd Font 10";
+    selected-text:               #11111bff;
+    border-color:                @selected;
+}
+
+configuration {
+    show-icons:                  true;
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       850px;
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      2px solid;
+    border-radius:               12px;
+    border-color:                @border-color;
+    background-color:            @background;
+    cursor:                      "default";
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     12px;
+    padding:                     20px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     12px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @selected;
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "Pesquisar histórico do clipboard...";
+    placeholder-color:           #6c7086;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    spacing:                     6px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     12px;
+    padding:                     10px 14px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+    children:                    [ "element-icon", "element-text" ];
+}
+
+element-icon {
+    size:                        38px;
+    cursor:                      inherit;
+    border-radius:               6px;
+    background-color:            transparent;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @selected-text;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}

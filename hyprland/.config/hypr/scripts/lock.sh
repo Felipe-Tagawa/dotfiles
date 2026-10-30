@@ -1,24 +1,27 @@
 #!/usr/bin/env bash
+# =============================================================================
+# Screen Locker Script
+# Prefers hyprlock (native for Hyprland), fallback to gtklock / swaylock
+# =============================================================================
 
-# Evita que múltiplas instâncias do gtklock sejam lançadas ao mesmo tempo
-if pidof gtklock > /dev/null; then
+# Avoid multiple instances
+if pidof hyprlock >/dev/null || pidof gtklock >/dev/null || pidof swaylock >/dev/null; then
     exit 0
 fi
 
-# Caminho da imagem temporária
-IMAGE=/tmp/screen_lock.png
-
-# 1. Tira print da tela com grim.
-if grim $IMAGE; then
-    # 2. Borra a imagem se o print funcionou.
-    convert $IMAGE -blur 0x8 $IMAGE
-    
-    # 3. Executa o gtklock com a imagem borrada.
-    gtklock -b $IMAGE
+if command -v hyprlock &>/dev/null; then
+    exec hyprlock
+elif command -v gtklock &>/dev/null; then
+    IMAGE=/tmp/screen_lock.png
+    if grim "$IMAGE" 2>/dev/null; then
+        convert "$IMAGE" -blur 0x8 "$IMAGE" 2>/dev/null
+        gtklock -b "$IMAGE"
+        rm -f "$IMAGE"
+    else
+        exec gtklock
+    fi
+elif command -v swaylock &>/dev/null; then
+    exec swaylock -f -c 1e1e2e
 else
-    echo "Erro: Não foi possível tirar o print da tela com 'grim'."
-    gtklock
+    notify-send -u critical "Locker" "Nenhum bloqueador de tela disponível (instale hyprlock ou gtklock)."
 fi
-
-# 4. Apaga a imagem temporária ao desbloquear.
-rm -f $IMAGE

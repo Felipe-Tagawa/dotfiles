@@ -1,0 +1,12 @@
+/**
+ * Colors: Rose Pine Moon
+ **/
+
+* {
+    background:     #232136FF;
+    background-alt: #2a273fFF;
+    foreground:     #e0def4FF;
+    selected:       #ea9a97FF;
+    active:         #9ccfd8FF;
+    urgent:         #eb6f92FF;
+}

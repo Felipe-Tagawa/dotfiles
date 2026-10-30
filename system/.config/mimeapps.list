@@ -1,0 +1,9 @@
+
+[Default Applications]
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+inode/directory=org.kde.dolphin.desktop
+x-scheme-handler/pttp=CiscoPacketTracerPtsa-9.0.1.desktop
+application/x-pka=CiscoPacketTracer-9.0.1.desktop
+application/x-pkt=CiscoPacketTracer-9.0.1.desktop
+application/x-pkz=CiscoPacketTracer-9.0.1.desktop
+application/x-pksz=CiscoPacketTracer-9.0.1.desktop

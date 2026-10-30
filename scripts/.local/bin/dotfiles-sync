@@ -1,0 +1,128 @@
+#!/bin/bash
+# ==============================================================================
+# dotfiles-sync - Sincronização e Backup com IA dos Dotfiles
+# ==============================================================================
+
+set -e
+
+DOTFILES_DIR="$HOME/dotfiles"
+SILENT=false
+
+for arg in "$@"; do
+    case "$arg" in
+        -s|--silent)
+            SILENT=true
+            ;;
+        -h|--help)
+            echo "Uso: dotfiles-sync [OPÇÕES]"
+            echo ""
+            echo "Opções:"
+            echo "  -s, --silent    Executa de forma silenciosa (para cron/systemd)"
+            echo "  -h, --help      Exibe esta mensagem de ajuda"
+            exit 0
+            ;;
+    esac
+done
+
+log() {
+    if [ "$SILENT" = false ]; then
+        echo "$@"
+    fi
+}
+
+notify() {
+    local urgency="$1"
+    local title="$2"
+    local message="$3"
+    notify-send -u "$urgency" -a "SwayNC" -i git "$title" "$message" 2>/dev/null || true
+}
+
+if [ ! -d "$DOTFILES_DIR/.git" ]; then
+    log "❌ Erro: Diretório $DOTFILES_DIR não é um repositório git válido."
+    exit 1
+fi
+
+cd "$DOTFILES_DIR"
+
+# Verificar se há alterações não rastreadas ou modificadas
+if git diff --quiet && git diff --cached --quiet && [ -z "$(git status --porcelain)" ]; then
+    log "✨ Nenhum arquivo alterado no repositório de dotfiles. Tudo sincronizado!"
+    exit 0
+fi
+
+log "📦 Adicionando alterações aos dotfiles..."
+git add -A
+
+# Obter resumo dos arquivos modificados
+CHANGED_FILES=$(git diff --cached --name-only | head -n 8 | tr '\n' ' ')
+DIFF_SAMPLE=$(git diff --cached --stat | head -n 25; echo "---"; git diff --cached | head -c 5000)
+
+export PATH="$HOME/.gemini/bin:$HOME/.local/bin:$PATH"
+
+log "🤖 Analisando alterações e gerando Conventional Commit com IA..."
+
+generate_commit_message() {
+    local prompt="Você é um especialista em Git e Conventional Commits.
+Analise as alterações a seguir nos dotfiles e gere APENAS a primeira linha da mensagem de commit no formato:
+<tipo>(<escopo>): <descrição em português no imperativo>
+
+Exemplos:
+- feat(waybar): adiciona módulo de clima em tempo real
+- fix(hyprland): ajusta regras de janela para o pavucontrol
+- style(waybar): remove indicador de cpu e memória
+- chore(dotfiles): atualiza atalhos e configurações
+
+Tipos permitidos: feat, fix, docs, style, refactor, perf, test, chore, build, ci.
+Retorne ESTRITAMENTE a linha única do commit, sem explicações, crases ou aspas.
+
+Diff das alterações:
+$DIFF_SAMPLE"
+
+    local msg=""
+    if command -v agy &>/dev/null; then
+        msg=$(agy -p "$prompt" 2>/dev/null | tr -d '`' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | head -n 1)
+    elif [ -n "$GEMINI_API_KEY" ] && command -v python3 &>/dev/null; then
+        msg=$(python3 - << EOF 2>/dev/null
+import os
+from google import genai
+try:
+    client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+    res = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents="""$prompt"""
+    )
+    print(res.text.strip().replace('`', '').splitlines()[0])
+except Exception:
+    pass
+EOF
+)
+    fi
+
+    # Fallback inteligente se a IA falhar ou estiver offline
+    if [ -z "$msg" ]; then
+        local first_file=$(git diff --cached --name-only | head -n 1)
+        local scope="dotfiles"
+        if [[ "$first_file" =~ ^([^/]+)/ ]]; then
+            scope="${BASH_REMATCH[1]}"
+        fi
+        msg="chore($scope): atualiza configurações dos dotfiles"
+    fi
+
+    echo "$msg"
+}
+
+COMMIT_MSG=$(generate_commit_message)
+
+log "📝 Mensagem: $COMMIT_MSG"
+git commit -m "$COMMIT_MSG"
+
+log "🚀 Enviando alterações para o repositório remoto (origin/main)..."
+
+# Tentar fazer push (tempo limite de 15s para evitar travamento se sem rede)
+if timeout 15 git push origin main 2>/dev/null; then
+    log "✅ Sincronização concluída e enviada ao GitHub!"
+    notify "normal" "Dotfiles Sincronizados" "$COMMIT_MSG"
+else
+    log "⚠️ Commit realizado localmente, mas não foi possível enviar ao remoto (sem rede ou push bloqueado)."
+    notify "low" "Dotfiles Commitados Localmente" "$COMMIT_MSG\n(O push será enviado na próxima sincronização)"
+fi

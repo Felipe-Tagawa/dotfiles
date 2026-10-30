@@ -1,7 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Script para iniciar o daemon de clipboard
+# Inicia o daemon do cliphist para texto e imagem em background se ainda não estiverem rodando
+if ! pgrep -f "wl-paste --type text --watch cliphist store" > /dev/null; then
+    wl-paste --type text --watch cliphist store &
+fi
 
-# Inicia o wl-paste que envia para cliphist
-wl-paste --type text --watch cliphist store
-wl-paste --type image --watch cliphist store
+if ! pgrep -f "wl-paste --type image --watch cliphist store" > /dev/null; then
+    wl-paste --type image --watch cliphist store &
+fi

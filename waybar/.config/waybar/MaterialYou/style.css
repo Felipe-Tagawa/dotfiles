@@ -1,10 +1,17 @@
-/* Catppuccin Mocha - Waybar Style */
+@import "../colors/dynamic.css";
 
 * {
   font-family: "JetBrainsMono Nerd Font", "Material Design Icons", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   min-height: 0;
+}
+
+button {
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
 }
 
 window#waybar {
@@ -14,179 +21,247 @@ window#waybar {
 #workspaces,
 #window,
 #clock,
+#mpris,
+#cava,
+#custom-weather,
 #cpu,
 #memory,
-#temperature,
 #battery,
 #network,
 #pulseaudio,
-#tray {
-  background: #1e1e2e;
-  color: #cdd6f4;
-  padding: 0 16px;
-  margin: 0 4px;
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+#tray,
+#custom-notification {
+  background: @surface;
+  color: @on_surface;
+  padding: 0 14px;
+  margin: 0 3px;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Material You elevation on hover */
+/* Hover elevation */
 #workspaces:hover,
+#custom-weather:hover,
 #cpu:hover,
 #memory:hover,
-#temperature:hover,
 #battery:hover,
 #network:hover,
-#pulseaudio:hover {
-  background: #313244;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+#pulseaudio:hover,
+#custom-notification:hover {
+  background: @surface_hover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-/* Workspaces */
+/* Workspaces - Dynamic Smart Pills */
 #workspaces {
-  padding: 0 8px;
+  padding: 2px 4px;
 }
 
+/* Workspaces ocupadas (com janelas abertas) */
 #workspaces button {
   padding: 0 8px;
-  color: #7f849c;
+  min-width: 24px;
+  min-height: 24px;
+  color: @on_surface;
   background: transparent;
-  border-radius: 16px;
+  border-radius: 12px;
   margin: 4px 2px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button:hover {
-  background: #45475a;
-  color: #cdd6f4;
+  background: @primary;
+  color: @on_primary;
+  opacity: 1;
 }
 
+/* Workspace Ativa em Evidência (destacada, expandida e com gradiente vibrante) */
 #workspaces button.active {
-  background: linear-gradient(135deg, #cba6f7, #89b4fa);
-  color: #11111b;
-  box-shadow: 0 2px 6px rgba(203, 166, 247, 0.4);
+  background: linear-gradient(135deg, @primary, @accent);
+  color: @on_primary;
+  min-width: 36px;
+  min-height: 26px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 13px;
+  margin: 3px 2px;
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
+/* Workspace Vazia / Menor ao Lado (sutil, discreta e compacta) */
+#workspaces button.empty {
+  background: transparent;
+  color: @on_surface_muted;
+  min-width: 16px;
+  min-height: 20px;
+  padding: 0 4px;
+  margin: 6px 2px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 10px;
+  opacity: 0.4;
+  border: none;
+}
+
+#workspaces button.empty:hover {
+  opacity: 0.9;
+  border-style: solid;
+  background: @surface_hover;
+  color: @on_surface;
+}
+
+/* Workspace Urgente */
 #workspaces button.urgent {
-  background: #f38ba8;
-  color: #11111b;
+  background: @error;
+  color: @on_primary;
 }
 
 /* Window Title */
 #window {
-  color: #b4befe;
+  color: @secondary;
   font-weight: 500;
+  padding: 0 14px;
 }
 
-/* Clock - Center with emphasis */
+/* Clock - Balanced, centered pill */
 #clock {
-  background: linear-gradient(135deg, #cba6f7 0%, #89b4fa 100%);
-  color: #11111b;
+  background: @surface;
+  color: @primary;
   font-weight: 700;
-  font-size: 15px;
-  padding: 0 24px;
-  box-shadow: 0 3px 10px rgba(203, 166, 247, 0.3);
+  font-size: 13px;
+  padding: 0 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 #clock:hover {
-  box-shadow: 0 4px 14px rgba(203, 166, 247, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
 /* CPU */
 #cpu {
-  color: #89dceb;
+  color: @accent;
 }
 
 #cpu.warning {
-  color: #f9e2af;
+  color: @secondary;
 }
 
 #cpu.critical {
-  color: #f38ba8;
+  color: @error;
 }
 
 /* Memory */
 #memory {
-  color: #a6e3a1;
+  color: @primary;
 }
 
 #memory.warning {
-  color: #f9e2af;
+  color: @secondary;
 }
 
 #memory.critical {
-  color: #f38ba8;
-}
-
-/* Temperature */
-#temperature {
-  color: #94e2d5;
-}
-
-#temperature.critical {
-  color: #f38ba8;
+  color: @error;
 }
 
 /* Battery */
 #battery {
-  color: #a6e3a1;
+  color: @primary;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #f9e2af;
-  background: linear-gradient(135deg, #1e1e2e, rgba(249, 226, 175, 0.1));
+  color: @secondary;
 }
 
 #battery.warning:not(.charging) {
-  color: #fab387;
+  color: @secondary;
 }
 
 #battery.critical:not(.charging) {
-  color: #f38ba8;
+  color: @error;
 }
 
 /* Network */
 #network {
-  color: #74c7ec;
+  color: @accent;
 }
 
 #network.disconnected {
-  color: #f38ba8;
+  color: @error;
 }
 
 /* Pulseaudio */
 #pulseaudio {
-  color: #f5c2e7;
+  color: @secondary;
 }
 
 #pulseaudio.muted {
-  color: #7f849c;
+  color: @on_surface_muted;
 }
 
 /* System Tray */
 #tray {
-  padding: 0 12px;
+  padding: 0 10px;
 }
 
-#tray>.passive {
+#tray > .passive {
   -gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #f38ba8;
-  border-radius: 16px;
+  background-color: @error;
+  border-radius: 14px;
 }
 
 /* Tooltips */
 tooltip {
-  background: #1e1e2e;
-  border: 2px solid #313244;
+  background: @surface;
+  border: 1px solid @primary;
   border-radius: 12px;
-  padding: 12px;
+  padding: 8px 12px;
 }
 
 tooltip label {
-  color: #cdd6f4;
+  color: @on_surface;
+}
+
+/* Dynamic Island & Media Player */
+#mpris {
+  background: @primary_container;
+  color: @on_primary_container;
+  font-weight: 700;
+  padding: 0 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mpris:hover {
+  background: @primary;
+  color: @on_primary;
+}
+
+#mpris.paused {
+  background: @surface;
+  color: @outline;
+}
+
+/* Cava Audio Visualizer */
+#cava {
+  color: @primary;
+  padding: 0 10px;
+  letter-spacing: 1px;
+}
+
+#cava:hover {
+  color: @secondary;
+}
+
+/* Custom Weather */
+#custom-weather {
+  color: @accent;
 }

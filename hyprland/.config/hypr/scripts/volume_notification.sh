@@ -1,7 +1,22 @@
 #!/bin/bash
 
-# Notificação de volume (usado com atalhos de teclado)
+# Notificação e controle de volume (SwayOSD com fallback para pactl + notify-send)
 # Uso: volume_notification.sh [up|down|mute]
+
+if command -v swayosd-client >/dev/null 2>&1; then
+    case $1 in
+        up)
+            swayosd-client --output-volume raise 5
+            ;;
+        down)
+            swayosd-client --output-volume lower 5
+            ;;
+        mute)
+            swayosd-client --output-volume mute-toggle
+            ;;
+    esac
+    exit 0
+fi
 
 get_volume() {
     pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+(?=%)' | head -1
