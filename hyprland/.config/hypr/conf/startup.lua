@@ -15,7 +15,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("bash -c '[ -x /usr/libexec/kf6/polkit-kde-authentication-agent-1 ] && /usr/libexec/kf6/polkit-kde-authentication-agent-1 || /usr/libexec/polkit-kde-authentication-agent-1'")
 
     -- Notification Daemon, OSD and Bar
-    hl.exec_cmd("bash -c 'if command -v swaync &>/dev/null; then swaync; elif command -v dunst &>/dev/null; then dunst; fi'")
+    hl.exec_cmd("bash -c 'if command -v swaync &>/dev/null; then systemctl --user start swaync.service; elif command -v dunst &>/dev/null; then dunst; fi'")
     hl.exec_cmd("bash -c 'command -v swayosd-server &>/dev/null && swayosd-server'")
     hl.exec_cmd("~/.config/waybar/start.sh")
 
