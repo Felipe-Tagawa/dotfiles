@@ -8,6 +8,10 @@ export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
+# Aquamarine & Multi-GPU rendering priority (AMD iGPU primary, NVIDIA dGPU secondary)
+export AQ_DRM_DEVICES="/dev/dri/amd-igpu:/dev/dri/nv-dgpu"
+export AQ_MGPU_NO_EXPLICIT=1
+
 # Cedilla support for US-International layout is handled cleanly by ~/.XCompose
 # (GTK_IM_MODULE / QT_IM_MODULE are deprecated in Wayland and break GTK4/Chromium)
 

@@ -26,3 +26,8 @@ hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("HYPRCURSOR_SIZE", "24")
+
+-- Hardware & Multi-GPU (Aquamarine)
+-- Primary AMD Cezanne iGPU, Secondary NVIDIA GTX 1650 dGPU
+hl.env("AQ_DRM_DEVICES", "/dev/dri/amd-igpu:/dev/dri/nv-dgpu")
+hl.env("AQ_MGPU_NO_EXPLICIT", "1")
