@@ -6,7 +6,7 @@ O gerenciamento de links simbólicos é realizado de forma idempotente e declara
 
 ---
 
-## 📁 Estrutura de Diretórios
+## Estrutura de Diretórios
 
 ```text
 dotfiles/
@@ -88,7 +88,7 @@ dotfiles/
 
 ---
 
-## 🔧 Detalhamento dos Módulos
+## Detalhamento dos Módulos
 
 ### 1. Hyprland 0.56+ (Arquitetura Nativa em Lua)
 
@@ -199,7 +199,7 @@ Configurada em `swaync/.config/swaync/` e acionada por `SUPER + N` ou pelo ícon
 
 ---
 
-## 🧹 Relatório de Inconsistências Corrigidas e Ferramentas Inutilizadas
+## Relatório de Inconsistências Corrigidas e Ferramentas Inutilizadas
 
 Durante a auditoria completa do repositório, foram identificadas e saneadas ferramentas descontinuadas, inconsistências de dependências e redundâncias:
 
@@ -220,7 +220,7 @@ Durante a auditoria completa do repositório, foram identificadas e saneadas fer
 
 ---
 
-## 🚀 Instalação e Uso com GNU Stow
+## Instalação e Uso com GNU Stow
 
 O script `install.sh` é idempotente e automatiza a criação, atualização ou remoção dos links simbólicos:
 
@@ -237,7 +237,7 @@ cd ~/dotfiles
 
 ---
 
-## 🔍 Comandos de Validação e Diagnóstico
+## Comandos de Validação e Diagnóstico
 
 * **Validar integridade da configuração do Hyprland**:
   ```bash

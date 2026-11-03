@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Rofi Beats - Lo-Fi & Synthwave Radio Player
-# =============================================================================
 
 PID_FILE="/tmp/rofi-beats.pid"
 CURRENT_STATION_FILE="/tmp/rofi-beats.station"
 
 THEME="$HOME/.config/rofi/colors/current.rasi"
-ROFI_ARGS=(-dmenu -i -p "📻 Rofi Beats")
+ROFI_ARGS=(-dmenu -i -p "Rofi Beats")
 
 if [ -f "$THEME" ]; then
     ROFI_ARGS+=(-theme "$THEME")
@@ -50,8 +48,8 @@ if [ "$1" = "toggle" ] || [ "$1" = "stop" ]; then
     exit 0
 fi
 
-# Lista de opções estilizadas
-OPTIONS="☕ Lofi Girl (Beats to Relax/Study)\n🌌 Nightride FM (Synthwave / Retrowave)\n🌴 Chillsynth FM (Relax / Ambient Synth)\n👾 Darksynth FM (Cyberpunk / Heavy Synth)\n🎷 Coffee Shop Jazz (Piano & Cafe Beats)\n🌧️ Lofi Sleep & Ambient Rain\n⏸️ Parar Reprodução"
+# Lista de opcoes
+OPTIONS="Lofi Girl (Beats to Relax/Study)\nNightride FM (Synthwave / Retrowave)\nChillsynth FM (Relax / Ambient Synth)\nDarksynth FM (Cyberpunk / Heavy Synth)\nCoffee Shop Jazz (Piano & Cafe Beats)\nLofi Sleep & Ambient Rain\nParar Reproducao"
 
 CHOICE=$(echo -e "$OPTIONS" | rofi "${ROFI_ARGS[@]}")
 

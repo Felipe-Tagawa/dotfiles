@@ -1,7 +1,5 @@
--- =============================================================================
 -- NEOVIM THEME CONFIGURATION
 -- Dynamic theme loader synchronized with desktop environment
--- =============================================================================
 
 vim.o.background = "dark"
 

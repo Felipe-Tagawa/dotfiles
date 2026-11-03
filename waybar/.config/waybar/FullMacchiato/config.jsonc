@@ -273,14 +273,14 @@
 
     // Modules Config
     "hyprland/window": {
-        "format": "👼 {title} 😈",
+        "format": "{title}",
         "max-length": 50,
     },
 
     "hyprland/language": {
-        "format-en": "🇺🇸 ENG (US)",
-        "format-uk": "🇺🇦 UKR",
-        "format-ru": "🇷🇺 RUS",
+        "format-en": "ENG (US)",
+        "format-uk": "UKR",
+        "format-ru": "RUS",
         "keyboard-name": "at-translated-set-2-keyboard",
         "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
     },
@@ -378,7 +378,7 @@
         "thermal-zone": 8,
         "critical-threshold": 80,
         "format": "{icon}{temperatureC}󰔄",
-        "format-critical": "🔥{icon}{temperatureC}󰔄",
+        "format-critical": "{icon}{temperatureC}󰔄",
         "format-icons": [ "", "" ],
     },
 
@@ -462,7 +462,7 @@
     },
 
     "systemd-failed-units": {
-        "format": "✗ {nr_failed}",
+        "format": "{nr_failed}",
     },
 },
 ]

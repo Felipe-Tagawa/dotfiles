@@ -2,9 +2,7 @@
 --- Configured according to Hyprland 0.56+ Lua API
 ---@module 'hl'
 
--- ==========================================
 -- WINDOW RULES
--- ==========================================
 
 hl.window_rule({
     name  = "float_pavucontrol",
@@ -90,9 +88,7 @@ hl.window_rule({
     rounding = 12,
 })
 
--- ==========================================
 -- LAYER RULES
--- ==========================================
 
 hl.layer_rule({
     name         = "swaync_effects",

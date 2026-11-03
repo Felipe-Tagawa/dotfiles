@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Dotfiles Installer & Symlink Manager (GNU Stow)
 # Fedora 44 & Hyprland 0.56+
-# =============================================================================
 
 set -e
 
@@ -18,9 +16,7 @@ ACTION="-R" # Default: restow
 DRY_RUN=""
 SPECIFIC_MODULE=""
 
-# -----------------------------------------------------------------------------
 # Module List (in load order)
-# -----------------------------------------------------------------------------
 MODULES=(
     "bash"
     "git"
@@ -84,9 +80,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-echo -e "${BLUE}====================================================${NC}"
-echo -e "${BLUE}       Gerenciador de Dotfiles (GNU Stow)          ${NC}"
-echo -e "${BLUE}====================================================${NC}"
+echo -e "${BLUE}Gerenciador de Dotfiles (GNU Stow)${NC}"
 echo -e "Diretório de Dotfiles: ${GREEN}$DOTFILES_DIR${NC}"
 echo -e "Destino (HOME):        ${GREEN}$TARGET_DIR${NC}"
 echo ""
@@ -153,7 +147,6 @@ done
 
 # Verification
 echo ""
-echo -e "${BLUE}====================================================${NC}"
 echo -e "${GREEN}Concluído com sucesso!${NC}"
 if command -v Hyprland &>/dev/null; then
     echo -e "${BLUE}Verificando sintaxe do Hyprland...${NC}"
