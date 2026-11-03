@@ -52,7 +52,7 @@
           "command": "~/.config/hypr/scripts/wifi_toggle.sh"
         },
         {
-          "label": "󰂯  BT",
+          "label": "󰂯  Bluetooth",
           "type": "toggle",
           "active": true,
           "command": "rfkill toggle bluetooth && notify-send -i bluetooth 'Bluetooth' 'Alternado'"
@@ -63,9 +63,19 @@
           "command": "~/.config/hypr/scripts/shader-menu.sh toggle"
         },
         {
-          "label": "󰹑  Print",
+          "label": "󰹑  Captura",
           "type": "button",
           "command": "grim -g \"$(slurp)\" - | wl-copy && notify-send -i camera-photo 'Screenshot' 'Área copiada'"
+        },
+        {
+          "label": "󰎈  Rádio",
+          "type": "button",
+          "command": "~/.config/rofi/scripts/rofi-beats.sh"
+        },
+        {
+          "label": "󰌌  Bloquear",
+          "type": "button",
+          "command": "~/.config/hypr/scripts/lock.sh"
         }
       ]
     },
