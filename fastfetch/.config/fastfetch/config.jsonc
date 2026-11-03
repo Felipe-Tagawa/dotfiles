@@ -49,11 +49,6 @@
       "keyColor": "blue"
     },
     {
-      "type": "cpu",
-      "key": "󰻠 CPU",
-      "keyColor": "red"
-    },
-    {
       "type": "memory",
       "key": "󰍛 Memória",
       "keyColor": "magenta"
