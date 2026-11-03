@@ -61,6 +61,16 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name      = "dropdown_terminal",
+    match     = { class = "^(dropdown-terminal)$" },
+    workspace = "special:scratchpad",
+    float     = true,
+    size      = { "80%", "52%" },
+    move      = { "10%", "3%" },
+    rounding  = 16,
+})
+
+hl.window_rule({
     name   = "float_ai_scratchpad",
     match  = { class = "^(ai-scratchpad)$" },
     float  = true,

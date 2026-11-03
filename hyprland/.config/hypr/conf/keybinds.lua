@@ -106,7 +106,7 @@ end
 
 -- SPECIAL WORKSPACE (Scratchpad)
 
-hl.bind(mod .. " + grave",         hl.dsp.workspace.toggle_special("scratchpad"))
+hl.bind(mod .. " + grave",         hl.dsp.exec_cmd("~/.config/hypr/scripts/dropdown-terminal.sh"))
 hl.bind(mod .. " + SHIFT + grave", hl.dsp.window.move({ workspace = "special:scratchpad" }))
 
 -- SYSTEM UTILITIES & HYPRLAND CONTROLS

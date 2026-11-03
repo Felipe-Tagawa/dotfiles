@@ -7,30 +7,27 @@
 }
 
 window {
-    background-color: rgba(10, 10, 14, 0.60);
+    background-color: alpha(@surface, 0.45);
 }
 
 button {
     color: @on_surface;
-    background-color: rgba(30, 30, 46, 0.75);
-    border-radius: 26px;
-    border: 2px solid rgba(255, 255, 255, 0.08);
-    margin: 20px 14px;
+    background-color: alpha(@surface_container, 0.72);
+    border-radius: 28px;
+    border: 1px solid alpha(@on_surface, 0.10);
+    margin: 18px 12px;
     padding: 28px 16px;
     font-size: 14px;
     font-weight: 700;
     background-repeat: no-repeat;
     background-position: center 32%;
     background-size: 38%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.40);
-    transition: all 0.25s cubic-bezier(0.05, 0.9, 0.1, 1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 button:focus, button:active, button:hover {
-    background-color: @surface_hover;
-    border-color: @primary;
-    color: @primary;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+    background-color: alpha(@surface_hover, 0.95);
     outline-style: none;
 }
 
@@ -54,28 +51,32 @@ button:focus, button:active, button:hover {
     background-image: image(url("icons/shutdown.svg"), url("/usr/share/wlogout/assets/shutdown.svg"));
 }
 
-/* Hover Accent Colors e Glow Dinâmico */
 #lock:hover {
     border-color: @primary;
     color: @primary;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }
 
 #logout:hover {
     border-color: @accent;
     color: @accent;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }
 
 #suspend:hover {
     border-color: @secondary;
     color: @secondary;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }
 
 #reboot:hover {
     border-color: @primary;
     color: @primary;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }
 
 #shutdown:hover {
     border-color: @error;
     color: @error;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }
