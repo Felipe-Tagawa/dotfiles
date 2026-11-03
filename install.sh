@@ -42,7 +42,6 @@ MODULES=(
     "wlogout"
     "swaync"
     "swayosd"
-    "jarvis"
 )
 
 usage() {

@@ -90,15 +90,6 @@ hl.window_rule({
     rounding = 12,
 })
 
-hl.window_rule({
-    name     = "jarvis_scratchpad",
-    match    = { class = "^(jarvis-scratchpad)$" },
-    float    = true,
-    size     = { "65%", "65%" },
-    center   = true,
-    rounding = 16,
-})
-
 -- ==========================================
 -- LAYER RULES
 -- ==========================================

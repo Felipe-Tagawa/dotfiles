@@ -82,7 +82,6 @@ dotfiles/
 ├── wlogout/            # Menu de saída cinematográfico com blur e Material You (.config/wlogout/)
 ├── swaync/             # Central de controle e notificações moderna (.config/swaync/)
 ├── swayosd/            # OSD cinematográfico de volume/brilho estilizado com Material You (.config/swayosd/)
-├── jarvis/             # Orquestrador agêntico autônomo e assistente de desktop com IA (.config/jarvis/)
 ├── bootstrap-fedora.sh # Instalação de dependências e configuração inicial no Fedora 44
 └── install.sh          # Script idempotente para aplicação de symlinks com GNU Stow
 ```
@@ -146,19 +145,7 @@ Configuração leve, rápida e autocontida sob `~/.config/nvim/lua/config/`:
 * `autocmds.lua`: Feedback visual ao copiar texto (`yank`) e retorno automático à última linha editada ao reabrir arquivos.
 * `theme.lua`: Carregamento defensivo com `pcall` do tema Gruvbox (contraste *hard*) com fallback inteligente para Catppuccin Mocha ou temas nativos caso o plugin não esteja presente.
 
-### 6. JARVIS - Desktop AI Assistant & Orchestrator
-
-O JARVIS é um orquestrador agêntico autônomo projetado para o Hyprland, acionado sob demanda pelo usuário:
-* **Context Awareness (Hyprland IPC)**: Inspeciona a janela em foco (`hyprctl activewindow`) e descobre o diretório real do projeto ativo via `/proc/<pid>/cwd`.
-* **Motor Híbrido Triplo**: Executa via `agy` (Google DeepMind) com raciocínio profundo, com fallback para `ollama` local (Llama 3.1) e API direta do Gemini.
-* **Memória Persistente**: Carrega preferências e stacks do usuário a partir de `~/.config/jarvis/memory.json`.
-* **Atalhos Globais**:
-  * `SUPER + A`: Abre o **Jarvis Spotlight HUD** (tema `jarvis.rasi`) para perguntas livres ou seleção de ações.
-  * `SUPER + SHIFT + A`: **Auto-Fix Instantâneo** — diagnostica erros ou tracebacks no clipboard e copia a solução.
-  * `SUPER + CTRL + A`: **Pair-Programmer Scratchpad** — abre terminal flutuante do Kitty com o agente de IA posicionado na pasta do projeto ativo.
-* **CLI Unificado**: Disponível globalmente no terminal através do comando `jarvis [menu|autofix|refactor|test|explain|pair|prompt]`.
-
-### 7. Terminal Kitty
+### 6. Terminal Kitty
 
 * Fonte principal: `JetBrains Mono` com suporte completo a ligaduras e ícones Nerd Font.
 * Tema de cores: `Catppuccin-Mocha` com opacidade ajustada para 70% (`background_opacity 0.70`).

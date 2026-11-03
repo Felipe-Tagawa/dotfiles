@@ -44,10 +44,6 @@ hl.bind(mod .. " + F7", hl.dsp.exec_cmd("steam"))
 hl.bind(mod .. " + I",  hl.dsp.exec_cmd("kitty nvim"))
 hl.bind(mod .. " + Z",  hl.dsp.exec_cmd("kitty --class cava-visualizer -e cava"))
 
--- JARVIS Local Autonomous Desktop Orchestrator
-hl.bind(mod .. " + A",         hl.dsp.exec_cmd("~/jarvis-local/scripts/jarvis_hud.sh"))
-hl.bind(mod .. " + SHIFT + A", hl.dsp.exec_cmd("kitty --class jarvis-scratchpad --title 'Jarvis: Chat' -e python3 ~/jarvis-local/app/main.py chat"))
-
 -- ==========================================
 -- SCREENSHOTS
 -- ==========================================
