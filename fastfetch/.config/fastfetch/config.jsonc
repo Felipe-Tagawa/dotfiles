@@ -29,11 +29,6 @@
       "keyColor": "blue"
     },
     {
-      "type": "kernel",
-      "key": "󰌽 Kernel",
-      "keyColor": "cyan"
-    },
-    {
       "type": "uptime",
       "key": "󰅐 Uptime",
       "keyColor": "green"
@@ -62,11 +57,6 @@
       "type": "memory",
       "key": "󰍛 Memória",
       "keyColor": "magenta"
-    },
-    {
-      "type": "battery",
-      "key": "󰁹 Bateria",
-      "keyColor": "green"
     },
     {
       "type": "break"
