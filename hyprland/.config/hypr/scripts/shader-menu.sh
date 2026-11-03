@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Hyprland Shader Selector & Toggle (Hyprshade Alternative)
 # Compatible with Hyprland 0.56+ Lua API and Legacy Keywords
-# =============================================================================
 
 SHADERS_DIR="$HOME/.config/hypr/shaders"
 STATE_FILE="/tmp/hypr_active_shader"
@@ -87,7 +85,7 @@ if [ -n "$1" ]; then
 fi
 
 # Menu Interativo via Rofi
-OPTIONS="🌟 Nenhum (Desativar Shader)\n🌈 Vibrance (Cores Vivas)\n🌙 Luz Noturna (Filtro Azul)\n🖤 Zen Mode (Monocromático)\n🕹️ Retrô CRT (Scanlines)\n🌓 Inverter Cores"
+OPTIONS="1. Nenhum (Desativar Shader)\n2. Vibrance (Cores Vivas)\n3. Luz Noturna (Filtro Azul)\n4. Zen Mode (Monocromatico)\n5. Retro CRT (Scanlines)\n6. Inverter Cores"
 
 ROFI_THEME="$HOME/.config/rofi/colors/current.rasi"
 ROFI_ARGS=(-dmenu -i -p "󰔎 Shaders")

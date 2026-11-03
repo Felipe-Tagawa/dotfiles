@@ -1,7 +1,5 @@
-# =============================================================================
 # ~/.bashrc: Executed by bash(1) for non-login interactive shells.
 # Modular Dotfiles Architecture
-# =============================================================================
 
 # If not running interactively, don't do anything
 case $- in

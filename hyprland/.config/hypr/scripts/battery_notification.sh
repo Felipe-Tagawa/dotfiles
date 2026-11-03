@@ -1,8 +1,6 @@
 #!/bin/bash
-# ==============================================================================
-# battery_notification.sh - Gestão dinâmica de taxa de atualização (144Hz/60Hz),
-#                           perfis de energia e notificações de bateria crítica.
-# ==============================================================================
+# battery_notification.sh - Gestao dinamica de taxa de atualizacao (144Hz/60Hz),
+#                           perfis de energia e notificacoes de bateria critica.
 
 LOW_BATTERY=20
 VERY_LOW_BATTERY=10

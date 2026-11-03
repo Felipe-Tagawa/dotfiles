@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Hyprlock status helper (Battery & Time/Date)
-# =============================================================================
 
 BAT_PATH="/sys/class/power_supply/BAT1"
 if [ ! -d "$BAT_PATH" ]; then

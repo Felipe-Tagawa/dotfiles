@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Screen Locker Script
 # Prefers hyprlock (native for Hyprland), fallback to gtklock / swaylock
-# =============================================================================
 
 # Avoid multiple instances
 if pidof hyprlock >/dev/null || pidof gtklock >/dev/null || pidof swaylock >/dev/null; then

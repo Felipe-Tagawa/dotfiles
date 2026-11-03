@@ -114,7 +114,7 @@ def main():
         "-dmenu",
         "-i",
         "-show-icons",
-        "-p", "🖼️  Galeria de Paisagens",
+        "-p", "Galeria de Wallpapers",
         "-theme", ROFI_THEME
     ]
 

@@ -1,6 +1,4 @@
-# =============================================================================
 # 10-aliases.sh: Shell Aliases & Functions
-# =============================================================================
 
 # Colored ls and defaults
 if [ -x /usr/bin/dircolors ]; then
@@ -19,6 +17,7 @@ alias clear='command clear && command -v fastfetch &>/dev/null && fastfetch'
 # System Management
 alias desligar='sudo shutdown now'
 alias reiniciar='sudo reboot'
+alias upgrade='system-upgrade'
 alias sudo='sudo '
 
 # Clipboard (Wayland)

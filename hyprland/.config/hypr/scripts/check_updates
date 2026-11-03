@@ -1,8 +1,6 @@
 #!/bin/bash
-# =============================================================================
 # System Update Notifier
 # Supports Fedora (dnf5 / dnf), Arch Linux (checkupdates), and Debian/Ubuntu (apt)
-# =============================================================================
 
 UPDATES=0
 

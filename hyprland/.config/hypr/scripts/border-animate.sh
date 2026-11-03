@@ -1,8 +1,6 @@
 #!/bin/bash
-# =============================================================================
 # Hyprland Border Animation Daemon
 # Rotates active gradient borders dynamically based on current_theme.lua
-# =============================================================================
 
 THEME_FILE="$HOME/.config/hypr/current_theme.lua"
 angle=0

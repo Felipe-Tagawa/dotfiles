@@ -1,7 +1,5 @@
 #!/bin/bash
-# ==============================================================================
-# ai_explain_clipboard.sh - Explicação rápida do clipboard via Gemini / agy
-# ==============================================================================
+# ai_explain_clipboard.sh - Explicacao rapida do clipboard via Gemini / agy
 
 # Garantir PATH para agy, notify-send e wl-paste
 export PATH="$HOME/.gemini/bin:$HOME/.local/bin:$PATH"

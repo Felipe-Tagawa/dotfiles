@@ -1,6 +1,4 @@
-# =============================================================================
 # 20-wayland.sh: Wayland, Hyprland & Input Module Configurations
-# =============================================================================
 
 # Wayland Session variables
 export XDG_SESSION_TYPE=wayland

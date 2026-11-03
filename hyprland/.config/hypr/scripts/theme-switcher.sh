@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Hyprland Global Theme Switcher with Circular Growth Transition
 # Switches: Wallpaper (swww), Hyprland Borders, Waybar, Kitty, Rofi, GTK, Neovim
 # Supports: Presets (Catppuccin, Gruvbox, etc.) & Dynamic Material You (Matugen)
-# =============================================================================
 
 STATE_FILE="$HOME/.config/hypr/.current_theme_name"
 WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
 [ ! -d "$WALLPAPERS_DIR" ] && WALLPAPERS_DIR="$HOME/dotfiles/Wallpaper/Pictures/Wallpapers"
 
-# -----------------------------------------------------------------------------
 # Dynamic Material You Theme from Wallpaper (Matugen)
-# -----------------------------------------------------------------------------
 apply_matugen() {
     local wallpaper="$1"
 
@@ -94,9 +90,7 @@ apply_matugen() {
     notify-send -t 1500 -a "Material You" "Tema Dinâmico Gerado" "$(basename "$wallpaper")" >/dev/null 2>&1 &
 }
 
-# -----------------------------------------------------------------------------
 # Preset Themes Application Function
-# -----------------------------------------------------------------------------
 apply_theme() {
     local theme="$1"
     local wallpaper=""
@@ -301,9 +295,7 @@ EOF
     notify-send -t 1500 -a "Tema" "Tema Ativado" "$display_name" >/dev/null 2>&1 &
 }
 
-# -----------------------------------------------------------------------------
-# Modos de Execução: menu, next, matugen/wall ou nome do tema
-# -----------------------------------------------------------------------------
+# Modos de Execucao: menu, next, matugen/wall ou nome do tema
 ACTION="${1:-menu}"
 
 THEMES_LIST=("catppuccin" "gruvbox" "rose-pine" "tokyo-night" "zen" "hunter")
@@ -362,9 +354,9 @@ case "$ACTION" in
         ;;
 
     "menu")
-        MENU_OPTIONS="✨ 1. Material You (Escolher Wallpaper)\n🌸 2. Catppuccin Mocha\n🍂 3. Gruvbox Retro\n🌺 4. Rose Pine Moon\n🌃 5. Tokyo Night / Cyber\n🏔️ 6. Minimal Zen (Climber)\n🩸 7. Dark Hunter (Bloodborne)\n🎲 Próximo Tema (Ciclo)"
+        MENU_OPTIONS="1. Material You (Escolher Wallpaper)\n2. Catppuccin Mocha\n3. Gruvbox Retro\n4. Rose Pine Moon\n5. Tokyo Night / Cyber\n6. Minimal Zen (Climber)\n7. Dark Hunter (Bloodborne)\n8. Proximo Tema (Ciclo)"
         
-        SELECTED=$(echo -e "$MENU_OPTIONS" | rofi -dmenu -i -p "🎨 Tema" -theme "$HOME/.config/rofi/clipboard.rasi")
+        SELECTED=$(echo -e "$MENU_OPTIONS" | rofi -dmenu -i -p "Tema" -theme "$HOME/.config/rofi/clipboard.rasi")
         
         case "$SELECTED" in
             *"Material You"*)
@@ -388,7 +380,7 @@ case "$ACTION" in
             *"Dark Hunter"*)
                 apply_theme "hunter"
                 ;;
-            *"Próximo"*)
+            *"Proximo"*|*"Próximo"*)
                 "$0" next
                 ;;
         esac

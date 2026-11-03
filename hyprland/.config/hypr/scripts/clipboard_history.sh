@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-# =============================================================================
 # Clipboard History Selector (Rofi + Cliphist + Image Previews)
-# =============================================================================
 
 CACHE_DIR="/tmp/cliphist-thumbs"
 mkdir -p "$CACHE_DIR"
 
 THEME="$HOME/.config/rofi/clipboard.rasi"
-ROFI_ARGS=(-dmenu -i -p "📋")
+ROFI_ARGS=(-dmenu -i -p "Clipboard")
 
 if [ -f "$THEME" ]; then
     ROFI_ARGS+=(-theme "$THEME")

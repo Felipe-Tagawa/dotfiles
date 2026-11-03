@@ -1,6 +1,4 @@
-# =============================================================================
 # 30-integrations.sh: Miniconda, Prompt, Homebrew, Antigravity CLI
-# =============================================================================
 
 # >>> conda initialize >>>
 if [ -f "$HOME/miniconda3/bin/conda" ]; then

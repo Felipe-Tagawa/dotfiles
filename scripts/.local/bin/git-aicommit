@@ -1,27 +1,25 @@
 #!/bin/bash
-# ==============================================================================
-# git-aicommit - Gerador automático de Conventional Commits com IA
-# ==============================================================================
+# git-aicommit - Gerador automatico de Conventional Commits
 
 set -e
 
 if ! git rev-parse --is-inside-work-tree &>/dev/null; then
-    echo "❌ Erro: O diretório atual não é um repositório Git."
+    echo "[erro] O diretorio atual nao e um repositorio Git."
     exit 1
 fi
 
-# Verificar se há alterações preparadas (staged)
+# Verificar se ha alteracoes preparadas (staged)
 if git diff --cached --quiet; then
     if git diff --quiet; then
-        echo "ℹ️  Nenhuma alteração detectada no repositório."
+        echo "Nenhuma alteracao detectada no repositorio."
         exit 0
     else
-        echo "⚠️  Nenhuma alteração em 'staged'. Deseja adicionar todas as alterações (git add -A)? [s/N]"
+        echo "Nenhuma alteracao em staged. Deseja adicionar todas as alteracoes (git add -A)? [s/N]"
         read -r reply
         if [[ "$reply" =~ ^[sSyY]$ ]]; then
             git add -A
         else
-            echo "Operação cancelada. Adicione as alterações com 'git add' antes de gerar o commit."
+            echo "Operacao cancelada. Adicione as alteracoes com 'git add' antes de gerar o commit."
             exit 0
         fi
     fi
@@ -30,24 +28,24 @@ fi
 DIFF_CONTENT=$(git diff --cached | head -c 8000)
 
 if [ -z "$DIFF_CONTENT" ]; then
-    echo "❌ Não foi possível extrair o diff das alterações."
+    echo "[erro] Nao foi possivel extrair o diff das alteracoes."
     exit 1
 fi
 
 export PATH="$HOME/.gemini/bin:$HOME/.local/bin:$PATH"
 
 generate_message() {
-    PROMPT="Você é um especialista em Git e Conventional Commits.
-Analise as alterações a seguir e gere APENAS a primeira linha da mensagem de commit no formato convencional:
-<tipo>(<escopo>): <descrição em português no imperativo>
+    PROMPT="Voce e um especialista em Git e Conventional Commits.
+Analise as alteracoes a seguir e gere APENAS a primeira linha da mensagem de commit no formato convencional:
+<tipo>(<escopo>): <descricao em portugues no imperativo>
 
 Exemplos:
 - feat(hyprland): adiciona atalho para scratchpad de ia
-- fix(waybar): corrige atualização de tema dinâmico
-- refactor(bash): modulariza variáveis de ambiente
+- fix(waybar): corrige atualizacao de tema dinamico
+- refactor(bash): modulariza variaveis de ambiente
 
 Tipos permitidos: feat, fix, docs, style, refactor, perf, test, chore, build, ci.
-Retorne ESTRITAMENTE a linha da mensagem de commit, sem aspas, crases ou explicações extras.
+Retorne ESTRITAMENTE a linha da mensagem de commit, sem aspas, crases ou explicacoes extras.
 
 Diff:
 $DIFF_CONTENT"
@@ -71,51 +69,49 @@ EOF
     fi
 }
 
-echo "🤖 Analisando diff e gerando mensagem de commit com IA..."
+echo "Analisando diff e gerando mensagem de commit..."
 COMMIT_MSG=$(generate_message)
 
 if [ -z "$COMMIT_MSG" ]; then
-    COMMIT_MSG="chore: atualizações no projeto"
+    COMMIT_MSG="chore: atualizacoes no projeto"
 fi
 
 while true; do
     echo ""
-    echo "=========================================================="
-    echo " Mensagem sugerida:"
-    echo "   $COMMIT_MSG"
-    echo "=========================================================="
+    echo "Mensagem sugerida: $COMMIT_MSG"
+    echo ""
     echo "[Enter] Confirmar e commitar"
     echo "[e]     Editar mensagem"
-    echo "[r]     Regenerar sugestão"
+    echo "[r]     Regenerar sugestao"
     echo "[c]     Cancelar"
-    read -p "Opção: " choice
+    read -p "Opcao: " choice
 
     case "$choice" in
         "")
             git commit -m "$COMMIT_MSG"
-            echo "✅ Commit realizado com sucesso!"
+            echo "Commit realizado com sucesso."
             break
             ;;
         [eE]*)
             read -p "Digite a nova mensagem de commit: " NEW_MSG
             if [ -n "$NEW_MSG" ]; then
                 git commit -m "$NEW_MSG"
-                echo "✅ Commit realizado com sucesso!"
+                echo "Commit realizado com sucesso."
             else
-                echo "Operação cancelada."
+                echo "Operacao cancelada."
             fi
             break
             ;;
         [rR]*)
-            echo "🔄 Gerando nova sugestão..."
+            echo "Gerando nova sugestao..."
             COMMIT_MSG=$(generate_message)
             ;;
         [cC]*)
-            echo "❌ Operação cancelada."
+            echo "Operacao cancelada."
             break
             ;;
         *)
-            echo "Opção inválida."
+            echo "Opcao invalida."
             ;;
     esac
 done

@@ -1,7 +1,5 @@
 #!/bin/bash
-# ==============================================================================
-# dotfiles-sync - Sincronização e Backup com IA dos Dotfiles
-# ==============================================================================
+# dotfiles-sync - Sincronizacao e Backup dos Dotfiles
 
 set -e
 
@@ -14,9 +12,9 @@ for arg in "$@"; do
             SILENT=true
             ;;
         -h|--help)
-            echo "Uso: dotfiles-sync [OPÇÕES]"
+            echo "Uso: dotfiles-sync [OPCOES]"
             echo ""
-            echo "Opções:"
+            echo "Opcoes:"
             echo "  -s, --silent    Executa de forma silenciosa (para cron/systemd)"
             echo "  -h, --help      Exibe esta mensagem de ajuda"
             exit 0
@@ -38,19 +36,19 @@ notify() {
 }
 
 if [ ! -d "$DOTFILES_DIR/.git" ]; then
-    log "❌ Erro: Diretório $DOTFILES_DIR não é um repositório git válido."
+    log "[erro] Diretorio $DOTFILES_DIR nao e um repositorio git valido."
     exit 1
 fi
 
 cd "$DOTFILES_DIR"
 
-# Verificar se há alterações não rastreadas ou modificadas
+# Verificar se ha alteracoes nao rastreadas ou modificadas
 if git diff --quiet && git diff --cached --quiet && [ -z "$(git status --porcelain)" ]; then
-    log "✨ Nenhum arquivo alterado no repositório de dotfiles. Tudo sincronizado!"
+    log "Nenhum arquivo alterado no repositorio de dotfiles. Tudo sincronizado."
     exit 0
 fi
 
-log "📦 Adicionando alterações aos dotfiles..."
+log "Adicionando alteracoes aos dotfiles..."
 git add -A
 
 # Obter resumo dos arquivos modificados
@@ -59,23 +57,23 @@ DIFF_SAMPLE=$(git diff --cached --stat | head -n 25; echo "---"; git diff --cach
 
 export PATH="$HOME/.gemini/bin:$HOME/.local/bin:$PATH"
 
-log "🤖 Analisando alterações e gerando Conventional Commit com IA..."
+log "Analisando alteracoes e gerando commit..."
 
 generate_commit_message() {
-    local prompt="Você é um especialista em Git e Conventional Commits.
-Analise as alterações a seguir nos dotfiles e gere APENAS a primeira linha da mensagem de commit no formato:
-<tipo>(<escopo>): <descrição em português no imperativo>
+    local prompt="Voce e um especialista em Git e Conventional Commits.
+Analise as alteracoes a seguir nos dotfiles e gere APENAS a primeira linha da mensagem de commit no formato:
+<tipo>(<escopo>): <descricao em portugues no imperativo>
 
 Exemplos:
-- feat(waybar): adiciona módulo de clima em tempo real
+- feat(waybar): adiciona modulo de clima em tempo real
 - fix(hyprland): ajusta regras de janela para o pavucontrol
-- style(waybar): remove indicador de cpu e memória
-- chore(dotfiles): atualiza atalhos e configurações
+- style(waybar): remove indicador de cpu e memoria
+- chore(dotfiles): atualiza atalhos e configuracoes
 
 Tipos permitidos: feat, fix, docs, style, refactor, perf, test, chore, build, ci.
-Retorne ESTRITAMENTE a linha única do commit, sem explicações, crases ou aspas.
+Retorne ESTRITAMENTE a linha unica do commit, sem explicacoes, crases ou aspas.
 
-Diff das alterações:
+Diff das alteracoes:
 $DIFF_SAMPLE"
 
     local msg=""
@@ -98,14 +96,14 @@ EOF
 )
     fi
 
-    # Fallback inteligente se a IA falhar ou estiver offline
+    # Fallback se a IA falhar ou estiver offline
     if [ -z "$msg" ]; then
         local first_file=$(git diff --cached --name-only | head -n 1)
         local scope="dotfiles"
         if [[ "$first_file" =~ ^([^/]+)/ ]]; then
             scope="${BASH_REMATCH[1]}"
         fi
-        msg="chore($scope): atualiza configurações dos dotfiles"
+        msg="chore($scope): atualiza configuracoes dos dotfiles"
     fi
 
     echo "$msg"
@@ -113,16 +111,16 @@ EOF
 
 COMMIT_MSG=$(generate_commit_message)
 
-log "📝 Mensagem: $COMMIT_MSG"
+log "Mensagem de commit: $COMMIT_MSG"
 git commit -m "$COMMIT_MSG"
 
-log "🚀 Enviando alterações para o repositório remoto (origin/main)..."
+log "Enviando alteracoes para origin/main..."
 
-# Tentar fazer push (tempo limite de 15s para evitar travamento se sem rede)
+# Tentar fazer push (limite de 15s)
 if timeout 15 git push origin main 2>/dev/null; then
-    log "✅ Sincronização concluída e enviada ao GitHub!"
+    log "Sincronizacao concluida e enviada ao repositorio remoto."
     notify "normal" "Dotfiles Sincronizados" "$COMMIT_MSG"
 else
-    log "⚠️ Commit realizado localmente, mas não foi possível enviar ao remoto (sem rede ou push bloqueado)."
-    notify "low" "Dotfiles Commitados Localmente" "$COMMIT_MSG\n(O push será enviado na próxima sincronização)"
+    log "[aviso] Commit realizado localmente; push pendente de conexao."
+    notify "low" "Dotfiles Commitados Localmente" "$COMMIT_MSG\n(O push sera enviado na proxima sincronizacao)"
 fi
