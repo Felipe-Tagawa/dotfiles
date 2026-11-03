@@ -18,6 +18,14 @@ window#waybar {
   background: transparent;
 }
 
+window#waybar > box {
+  background: alpha(@surface, 0.78);
+  border: 1px solid alpha(@primary, 0.22);
+  border-radius: 20px;
+  padding: 3px 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.50);
+}
+
 #workspaces,
 #window,
 #clock,
@@ -31,13 +39,14 @@ window#waybar {
 #pulseaudio,
 #tray,
 #custom-notification {
-  background: @surface;
+  background: alpha(@surface_container, 0.65);
   color: @on_surface;
   padding: 0 14px;
-  margin: 0 3px;
-  border-radius: 18px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 2px;
+  border-radius: 14px;
+  border: 1px solid alpha(@on_surface, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.20);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Hover elevation */
@@ -130,12 +139,12 @@ window#waybar {
 
 /* Clock - Balanced, centered pill */
 #clock {
-  background: @surface;
+  background: alpha(@surface_container, 0.85);
   color: @primary;
   font-weight: 700;
   font-size: 13px;
   padding: 0 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.20);
 }
 
 #clock:hover {
@@ -246,7 +255,7 @@ tooltip label {
 }
 
 #mpris.paused {
-  background: @surface;
+  background: alpha(@surface_container, 0.65);
   color: @outline;
 }
 
