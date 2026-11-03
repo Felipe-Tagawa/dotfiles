@@ -30,6 +30,7 @@
   "script-fail-notify": true,
   "widgets": [
     "title",
+    "buttons-grid",
     "dnd",
     "mpris",
     "volume",
@@ -41,6 +42,32 @@
       "text": "Central de Controle",
       "clear-all-button": true,
       "button-text": "Limpar Tudo"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰤨  Wi-Fi",
+          "type": "toggle",
+          "active": true,
+          "command": "~/.config/hypr/scripts/wifi_toggle.sh"
+        },
+        {
+          "label": "󰂯  BT",
+          "type": "toggle",
+          "active": true,
+          "command": "rfkill toggle bluetooth && notify-send -i bluetooth 'Bluetooth' 'Alternado'"
+        },
+        {
+          "label": "󰔎  Shaders",
+          "type": "button",
+          "command": "~/.config/hypr/scripts/shader-menu.sh toggle"
+        },
+        {
+          "label": "󰹑  Print",
+          "type": "button",
+          "command": "grim -g \"$(slurp)\" - | wl-copy && notify-send -i camera-photo 'Screenshot' 'Área copiada'"
+        }
+      ]
     },
     "dnd": {
       "text": "Não Perturbe"

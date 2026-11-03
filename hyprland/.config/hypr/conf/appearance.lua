@@ -80,10 +80,20 @@ hl.config({
     },
 })
 
--- Modern Elastic / Deceleration Bezier Curves (Material 3 & Smooth Feel)
-hl.curve("md3_decel", {
+-- Fluid Deceleration & Elastic Bezier Curves
+hl.curve("fluent_decel", {
     type   = "bezier",
-    points = { { 0.05, 0.9 }, { 0.1, 1.05 } },
+    points = { { 0.0, 0.2 }, { 0.13, 1.0 } },
+})
+
+hl.curve("easeOutQuint", {
+    type   = "bezier",
+    points = { { 0.23, 1.0 }, { 0.32, 1.0 } },
+})
+
+hl.curve("overshoot", {
+    type   = "bezier",
+    points = { { 0.05, 0.9 }, { 0.1, 1.08 } },
 })
 
 hl.curve("md3_accel", {
@@ -91,10 +101,10 @@ hl.curve("md3_accel", {
     points = { { 0.3, 0 }, { 0.8, 0.15 } },
 })
 
--- Animations Configuration (Popin elegante e slidefade fluido)
-hl.animation({ leaf = "windows",          enabled = true, speed = 5, bezier = "md3_decel", style = "popin 82%" })
-hl.animation({ leaf = "windowsOut",       enabled = true, speed = 4, bezier = "md3_accel", style = "popin 85%" })
-hl.animation({ leaf = "windowsMove",      enabled = true, speed = 5, bezier = "md3_decel", style = "slide" })
-hl.animation({ leaf = "fade",             enabled = true, speed = 5, bezier = "md3_decel" })
-hl.animation({ leaf = "workspaces",       enabled = true, speed = 6, bezier = "md3_decel", style = "slidefade 25%" })
-hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 5, bezier = "md3_decel", style = "slidefadevert 25%" })
+-- Animations Configuration (Organic Motion & Popin)
+hl.animation({ leaf = "windows",          enabled = true, speed = 5, bezier = "overshoot",    style = "popin 80%" })
+hl.animation({ leaf = "windowsOut",       enabled = true, speed = 4, bezier = "md3_accel",    style = "popin 82%" })
+hl.animation({ leaf = "windowsMove",      enabled = true, speed = 5, bezier = "fluent_decel", style = "slide" })
+hl.animation({ leaf = "fade",             enabled = true, speed = 4, bezier = "fluent_decel" })
+hl.animation({ leaf = "workspaces",       enabled = true, speed = 6, bezier = "easeOutQuint", style = "slidefade 20%" })
+hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 5, bezier = "overshoot",    style = "slidefadevert 20%" })

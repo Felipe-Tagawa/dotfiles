@@ -37,6 +37,39 @@
   color: @on_primary;
 }
 
+/* Quick Settings Grid */
+.widget-buttons-grid {
+  padding: 4px 0;
+  margin: 6px 0;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: rgba(30, 30, 46, 0.65);
+  color: @on_surface;
+  border-radius: 14px;
+  min-width: 76px;
+  min-height: 44px;
+  padding: 8px 12px;
+  margin: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @surface_hover;
+  border-color: @primary;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+  background: linear-gradient(135deg, @primary, @accent);
+  color: @on_primary;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
 /* DND (Do Not Disturb) */
 .widget-dnd {
   background: rgba(30, 30, 46, 0.65);
