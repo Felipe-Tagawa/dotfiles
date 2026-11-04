@@ -49,7 +49,7 @@
           "label": "󰤨  Wi-Fi",
           "type": "toggle",
           "active": true,
-          "command": "~/.config/hypr/scripts/wifi_toggle.sh"
+          "command": "~/.config/hypr/scripts/wifi.sh toggle"
         },
         {
           "label": "󰂯  Bluetooth",

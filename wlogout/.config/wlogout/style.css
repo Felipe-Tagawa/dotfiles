@@ -7,28 +7,42 @@
 }
 
 window {
-    background-color: alpha(@surface, 0.45);
+    background-color: alpha(@surface, 0.55);
 }
 
 button {
-    color: @on_surface;
-    background-color: alpha(@surface_container, 0.72);
+    color: @on_surface_muted;
+    background-color: alpha(@surface_container, 0.55);
     border-radius: 28px;
-    border: 1px solid alpha(@on_surface, 0.10);
+    border: 2px solid alpha(@on_surface, 0.08);
     margin: 18px 12px;
     padding: 28px 16px;
     font-size: 14px;
     font-weight: 700;
+    opacity: 0.65;
     background-repeat: no-repeat;
     background-position: center 32%;
-    background-size: 38%;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    background-size: 34%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    outline-color: transparent;
+    outline-style: none;
 }
 
-button:focus, button:active, button:hover {
-    background-color: alpha(@surface_hover, 0.95);
+button:focus,
+button:active,
+button:hover {
+    outline: none;
+    outline-color: transparent;
     outline-style: none;
+    opacity: 1.0;
+    margin: 10px 12px 26px 12px;
+    background-size: 40%;
+    border: 3px solid @primary;
+    color: @primary;
+    background-color: alpha(@primary_container, 0.55);
+    box-shadow: 0 0 24px alpha(@primary, 0.60), 0 14px 28px rgba(0, 0, 0, 0.75);
 }
 
 #lock {
@@ -49,34 +63,4 @@ button:focus, button:active, button:hover {
 
 #shutdown {
     background-image: image(url("icons/shutdown.svg"), url("/usr/share/wlogout/assets/shutdown.svg"));
-}
-
-#lock:hover {
-    border-color: @primary;
-    color: @primary;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
-}
-
-#logout:hover {
-    border-color: @accent;
-    color: @accent;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
-}
-
-#suspend:hover {
-    border-color: @secondary;
-    color: @secondary;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
-}
-
-#reboot:hover {
-    border-color: @primary;
-    color: @primary;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
-}
-
-#shutdown:hover {
-    border-color: @error;
-    color: @error;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }

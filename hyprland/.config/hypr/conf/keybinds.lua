@@ -50,7 +50,7 @@ hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy &
 hl.bind(mod .. " + V",                hl.dsp.exec_cmd("~/.config/hypr/scripts/clipboard_history.sh"))
 hl.bind(mod .. " + SHIFT + V",        hl.dsp.exec_cmd('wl-paste | cliphist store && notify-send "Clipboard" "Salvo no histórico"'))
 hl.bind(mod .. " + CTRL + V",         hl.dsp.exec_cmd('wl-paste --type image | cliphist store && notify-send "Clipboard" "Imagem salva"'))
-hl.bind(mod .. " + CTRL + SHIFT + V", hl.dsp.exec_cmd("~/.config/hypr/scripts/clipboard_clear.sh"))
+hl.bind(mod .. " + CTRL + SHIFT + V", hl.dsp.exec_cmd("~/.config/hypr/scripts/clipboard_history.sh clear"))
 
 -- MULTIMEDIA & BRIGHTNESS
 
@@ -63,11 +63,11 @@ hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("~/.config/hypr/scripts/brightn
 
 -- NETWORK & WI-FI SHORTCUTS
 
-hl.bind(mod .. " + W",                hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi_menu.sh"))
-hl.bind(mod .. " + CTRL + W",         hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi_toggle.sh"))
+hl.bind(mod .. " + W",                hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi.sh menu"))
+hl.bind(mod .. " + CTRL + W",         hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi.sh toggle"))
 hl.bind(mod .. " + SHIFT + W",        hl.dsp.exec_cmd("nm-connection-editor"))
-hl.bind(mod .. " + ALT + W",          hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi_status.sh"))
-hl.bind(mod .. " + CTRL + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi_disconnect.sh"))
+hl.bind(mod .. " + ALT + W",          hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi.sh status"))
+hl.bind(mod .. " + CTRL + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi.sh disconnect"))
 
 -- FOCUS NAVIGATION (Vim style + Arrows)
 

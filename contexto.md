@@ -38,19 +38,17 @@ dotfiles/
 │       │   ├── border-animate.sh          # Efeito degradê animado nas bordas ativas
 │       │   ├── brightness_notification.sh # Controle de brilho com SwayOSD e fallback
 │       │   ├── check_updates              # Checagem de atualizações com suporte a DNF5/DNF
-│       │   ├── clipboard_clear.sh         # Limpeza do histórico do Cliphist
 │       │   ├── clipboard_daemon.sh        # Daemon de captura de texto e imagem
-│       │   ├── clipboard_history.sh       # Menu Rofi com previews de miniaturas de imagens
+│       │   ├── clipboard_history.sh       # Menu Rofi com previews de miniaturas e limpeza (clear)
+│       │   ├── dropdown-terminal.sh       # Alternância do terminal flutuante no scratchpad
 │       │   ├── lock.sh                    # Bloqueio de tela inteligente (hyprlock/gtklock/swaylock)
 │       │   ├── lock-status.sh             # Helper de status de bateria e sessão para o Hyprlock
+│       │   ├── select-wallpaper.sh        # Seletor visual de papéis de parede para o theme-switcher
 │       │   ├── shader-menu.sh             # Seletor interativo de shaders de tela (Vibrance, Zen, Night Light)
 │       │   ├── theme-switcher.sh          # Orquestrador global de temas com transição circular (swww grow)
 │       │   ├── toggle-projetor.sh         # Alternância estendido/espelhado via hl.monitor
 │       │   ├── volume_notification.sh     # Notificações e controle de volume com SwayOSD e fallback
-│       │   ├── wifi_disconnect.sh         # Desconexão rápida de rede Wi-Fi
-│       │   ├── wifi_menu.sh               # Lançador do menu de rede Wi-Fi (Ronema)
-│       │   ├── wifi_status.sh             # Exibição do status atual da conexão
-│       │   └── wifi_toggle.sh             # Alternância de ativação do rádio Wi-Fi
+│       │   └── wifi.sh                    # Gestor unificado de Wi-Fi (menu, toggle, status, disconnect)
 │       ├── shaders/           # Shaders GLSL de pós-processamento (Hyprshade nativo)
 │       │   ├── blue-light-filter.glsl     # Filtro noturno quente (3400K)
 │       │   ├── crt.glsl                   # Scanlines retrô arcade
@@ -189,7 +187,6 @@ Configurada em `swaync/.config/swaync/` e acionada por `SUPER + N` ou pelo ícon
 ### 12. Automações de Produtividade, Energia e IA
 
 * **AI Scratchpad Flutuante (`SUPER + A`)**: Janela flutuante dedicada do Kitty configurada em `conf/rules.lua` (`class = ai-scratchpad`) executando o Antigravity CLI (`agy`) para assistência interativa instantânea.
-* **Explicação de Clipboard com IA (`SUPER + SHIFT + A`)**: Script `ai_explain_clipboard.sh` que captura o texto ou erro no clipboard Wayland (`wl-paste`), consulta o modelo Gemini de forma sucinta e exibe o parecer/solução diretamente em uma notificação rica do SwayNC.
 * **Conventional Commits com IA (`git-aicommit`)**: Utilitário em `~/.local/bin/git-aicommit` que analisa o `git diff --cached` e gera mensagens padronizadas de commit (`feat:`, `fix:`, `refactor:`) com confirmação interativa antes do commit.
 * **Gestão Dinâmica de Energia (144Hz ↔ 60Hz)**: Daemon `battery_notification.sh` aprimorado que detecta transição de alimentação em tempo real:
   * **Na Bateria**: Alterna display `eDP-1` para 60Hz, define perfil econômico e notifica no SwayNC.
