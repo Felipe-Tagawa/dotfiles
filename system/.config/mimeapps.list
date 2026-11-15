@@ -7,3 +7,5 @@ application/x-pka=CiscoPacketTracer-9.0.1.desktop
 application/x-pkt=CiscoPacketTracer-9.0.1.desktop
 application/x-pkz=CiscoPacketTracer-9.0.1.desktop
 application/x-pksz=CiscoPacketTracer-9.0.1.desktop
+x-scheme-handler/nxm=wine/Programs/Vortex.desktop
+x-scheme-handler/nxm-protocol=wine/Programs/Vortex.desktop
